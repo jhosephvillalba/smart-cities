@@ -1,0 +1,321 @@
+/* :root {
+  --font-family: PoppinsRegular, system-ui, Helvetica, sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --color-primary-btn:#03609D;
+  --color-secondary-btn: transparent;
+  --color-text-light:#fff; 
+  --color-text-dark:#03609D;
+  --bg-light: #fff;
+  ; 
+}
+
+@font-face {
+  font-family: PoppinsBold;
+  src: url(./assets/fonts/Poppins/Poppins-Bold.ttf);
+}
+
+@font-face {
+  font-family: PoppinsRegular;
+  src: url(./assets/fonts/Poppins/Poppins-Regular.ttf);
+}
+
+
+
+.btn-primary, .btn-secondary, .btn-info, .btn-dark{
+  border-radius: 55px;
+  font-size: 14px !important;
+}
+
+
+.btn-primary {
+  background: var(--color-primary-btn);
+  color:var(--color-text-light); 
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary-btn);
+  color: var(--color-text-dark);
+  border: 1px solid var(--color-text-dark);
+}
+
+.btn-info {
+  background-color: var(--color-secondary-btn);
+  border: 1px solid var(--color-text-dark);
+}
+
+.btn-info span {
+  color: var(--color-primary-btn) !important;
+}
+
+.text_footer {
+  color: #b6b6b6;
+  font-size: 14px;
+}
+
+.text_footer a span {
+  color: #b6b6b6;
+  font-size: 14px;
+  text-decoration: underline #b6b6b6;
+}
+
+
+body {
+  margin: 0;
+  font-family: var(--font-family) !important;  
+  font-size: var(--bs-body-font-size);
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
+  color: var(--bs-body-color);
+  text-align: var(--bs-body-text-align);
+  background-color: var(--bs-body-bg);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+} */
+
+
+/* :root {
+  --font-family: "PoppinsRegular", system-ui, Helvetica, sans-serif;
+  --color-primary-btn: #03609D;
+  --color-secondary-btn: transparent;
+  --color-text-light: #fff;
+  --color-text-dark: #03609D;
+  --bg-light: #fff;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+@font-face {
+  font-family: "PoppinsBold";
+  src: url(./assets/fonts/Poppins/Poppins-Bold.ttf);
+}
+
+@font-face {
+  font-family: "PoppinsRegular";
+  src: url(./assets/fonts/Poppins/Poppins-Regular.ttf);
+}
+
+
+.dropdown-toggle::after {
+  content: url('./assets/icons/smart-arrow.svg') !important; 
+  border: 0 !important; 
+  width: 12px;
+  height: 12px;
+  margin-left: 1.2rem !important;
+  vertical-align: 0 !important; 
+}
+
+
+.btn {
+  border-radius: 55px;
+  font-size: 14px !important;
+}
+
+.btn-primary {
+  background: var(--color-primary-btn);
+  color: var(--color-text-light);
+}
+
+.btn-secondary, .btn-info {
+  background-color: var(--color-secondary-btn);
+  border: 1px solid var(--color-text-dark);
+  color: var(--color-text-dark);
+}
+
+.btn-info span {
+  color: var(--color-primary-btn) !important;
+}
+
+.btn-dark {
+  background: var(--color-text-dark);
+  color: var(--color-text-light);
+}
+
+
+.text_footer {
+  color: #b6b6b6;
+  font-size: 14px;
+}
+
+.text_footer a span {
+  color: inherit;
+  text-decoration: underline;
+}
+
+
+body {
+  margin: 0;
+  font-family: var(--font-family) !important;
+  font-size: var(--bs-body-font-size);
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
+  color: var(--bs-body-color);
+  text-align: var(--bs-body-text-align);
+  background-color: var(--bs-body-bg);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+#root {
+  background-image: url(./assets/img/background-planet-earth.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  width: 100%;
+  z-index: 2;
+  height: 100vh;
+}
+
+.main-container {
+  background-color: var(--bg-light);
+  height: 100vh;
+  opacity: 0.9;
+}
+
+.main-container header {
+  background-color: var(--bg-light);
+}
+
+.main_title {
+  color: var(--color-text-dark);
+  font-family: PoppinsBold;
+} */
+
+
+:root {
+  --font-family: "PoppinsRegular", system-ui, Helvetica, sans-serif;
+  --color-primary-btn: #03609D;
+  --color-secondary-btn: transparent;
+  --color-text-light: #fff;
+  --color-text-dark: #03609D;
+  --bg-light: #fff;
+  --bg-dark: rgba(0, 0, 0, 0.6); /* Overlay oscuro para mejorar legibilidad */
+  --transition-time: 0.5s; /* Tiempo de transición */
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fuentes */
+@font-face {
+  font-family: "PoppinsBold";
+  src: url(./assets/fonts/Poppins/Poppins-Bold.ttf);
+}
+
+@font-face {
+  font-family: "PoppinsRegular";
+  src: url(./assets/fonts/Poppins/Poppins-Regular.ttf);
+}
+
+/* Estilo del dropdown toggle */
+.dropdown-toggle::after {
+  content: url('./assets/icons/smart-arrow.svg') !important; 
+  border: 0 !important; 
+  width: 12px;
+  height: 12px;
+  margin-left: 1.2rem !important;
+  vertical-align: 0 !important; 
+}
+
+/* Botones */
+.btn {
+  border-radius: 55px;
+  font-size: 14px !important;
+  transition: background-color var(--transition-time), color var(--transition-time);
+}
+
+.btn-primary {
+  background: var(--color-primary-btn);
+  color: var(--color-text-light);
+}
+
+.btn-secondary, .btn-info {
+  background-color: var(--color-secondary-btn);
+  border: 1px solid var(--color-text-dark);
+  color: var(--color-text-dark);
+}
+
+.btn-info span {
+  color: var(--color-primary-btn) !important;
+}
+
+.btn-dark {
+  background: var(--color-text-dark);
+  color: var(--color-text-light);
+}
+
+/* Footer */
+.text_footer {
+  color: #b6b6b6;
+  font-size: 14px;
+}
+
+.text_footer a span {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* Global */
+body {
+  margin: 0;
+  font-family: var(--font-family) !important;
+  font-size: var(--bs-body-font-size);
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
+  color: var(--color-text-dark); /* Color inicial */
+  text-align: var(--bs-body-text-align);
+  background-color: var(--bs-body-bg);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color var(--transition-time), color var(--transition-time);
+}
+
+#root {
+  background-image: url(./assets/img/background-planet-earth.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  width: 100%;
+  z-index: 2;
+  height: 100vh;
+
+}
+
+.main-container {
+  height: 100vh;
+  transition: opacity var(--transition-time);
+}
+
+.main_title {
+  color: var(--color-text-dark);
+  font-family: PoppinsBold;
+  transition: color var(--transition-time);
+}
+
+.main-container-bg {
+  opacity: 0.9;
+  background-color: var(--bg-light);
+  transition: background-color 1s ease-in-out;
+}
+
+.transparent {
+  background-color: rgba(255, 255, 255, 0); /* Se vuelve transparente */
+}
+
+.transparent div p {
+  color: #fff;
+}
+
+
+
+
