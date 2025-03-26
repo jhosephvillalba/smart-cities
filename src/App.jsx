@@ -23,7 +23,7 @@ function App() {
           </div>
           <ChatContent />
         </div>
-        <footer className="row mt-4 g-2">
+        <footer className="row mt-5 g-2">
           {/* Logo: Primero en móvil, último en escritorio */}
           <div className="col-12 col-md-2 mb-3 order-1 order-md-3">
             <div className="w-100 d-flex justify-content-md-end justify-content-center">

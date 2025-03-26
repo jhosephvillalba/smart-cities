@@ -174,7 +174,7 @@ const ChatForm = ({ sendMessage }) => {
       <div className="w-100 d-flex flex-column flex-md-column-reverse" style={{ maxWidth: "770px" }}>
 
         {/* --------------------------Caja de botones (arriba en md)------------------------- */}
-        <div className="w-100 d-flex justify-content-center flex-wrap mt-lg-4 mt-3 mb-3" style={{ maxWidth: "1200px" }}>
+        <div className="w-100 d-flex justify-content-center flex-wrap mt-lg-4  mb-3" style={{ maxWidth: "1200px" }}>
           <div className="d-flex flex-row gap-2 flex-wrap justify-content-center align-items-center">
             <button className="btn btn-info d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#about">
               <img src={IconBook} alt="ear" width={13} />
