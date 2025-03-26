@@ -11,7 +11,7 @@ function App() {
         <header>
           <Navbar set={setFade} fade={fade}/>
         </header>
-        <div className="container-sm chat-container h-100">
+        <div className="container-fluid chat-container h-100">
         <div className="d-flex w-100 justify-content-center form-check form-switch">
           <input
               className={`form-check-input switch_size`}

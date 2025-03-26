@@ -22,7 +22,7 @@
 //             style={{ width: "100%", minHeight: "100px" }}
 //             className={`${styles.input_text} input_text_bg_dark ${styles.font_family}`}
 //           ></textarea>
-          
+
 //           <div
 //             className={`w-100 d-flex flex-wrap flex-sm-nowrap ${styles.container_chat_buttons}  justify-content-between`}
 //           >
@@ -112,7 +112,9 @@
 // export default ChatForm;
 
 
-import React from "react";
+//import React from "react";
+import React, { useState } from "react"; // Asegúrate de incluir useState
+import axios from "axios"; // Importa axios
 import styles from "./styles.module.css";
 import IconLoupe from "../../assets/icons/smart-loupe.svg";
 import IconUpload from "../../assets/icons/smart-download.svg";
@@ -125,14 +127,45 @@ import IconStar from "../../assets/icons/smart-star.svg";
 import IconImg from "../../assets/icons/smart-img-load.svg";
 import IconMore from "../../assets/icons/smart-more.svg";
 
-const ChatForm = () => {
+const ChatForm = ({ sendMessage }) => {
+  const [input, setInput] = useState(""); // Estado para el mensaje del usuario
+  const [isLoading, setIsLoading] = useState(false); // Estado para carga
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!input.trim()) return; // Evitar mensajes vacíos
+
+    setIsLoading(true);
+    sendMessage({ message: input, isUser: true }); // Mensaje del usuario
+
+    try {
+      // Llamada a tu API de FastAPI (ajusta la URL)
+      //const response = await axios.post("http://localhost:8000/chat/", {
+      const response = await axios.post("http://ec2-54-166-74-32.compute-1.amazonaws.com:8000/chat/", {
+        message: input,
+      });
+
+      const botReply = response.data.choices[0].message.content;
+      sendMessage({ message: botReply, isUser: false }); // Respuesta del bot
+    } catch (error) {
+      console.error("Error al llamar a la API:", error);
+      sendMessage({
+        message: "❌ Error al obtener respuesta",
+        isUser: false
+      });
+    } finally {
+      setIsLoading(false);
+      setInput(""); // Limpiar el input
+    }
+  };
+
   return (
     <>
       {/* Se invierte el orden en pantallas md o más grandes */}
       <div className="w-100 d-flex flex-column flex-md-column-reverse" style={{ maxWidth: "770px" }}>
-        
+
         {/* --------------------------Caja de botones (arriba en md)------------------------- */}
-        <div className="w-100 d-flex justify-content-center flex-wrap mt-4" style={{ maxWidth: "1200px" }}>
+        <div className="w-100 d-flex justify-content-center flex-wrap mt-lg-4 mb-3" style={{ maxWidth: "1200px" }}>
           <div className="d-flex flex-row gap-2 flex-wrap justify-content-center align-items-center">
             <button className="btn btn-info d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#about">
               <img src={IconBook} alt="ear" width={13} />
@@ -162,43 +195,58 @@ const ChatForm = () => {
         </div>
 
         {/* --------------------------Caja de texto (abajo en md)------------------------- */}
-        <div className={`d-flex flex-column gap-1 w-100 ${styles.container_chat_text} mt-3`}>
-          <textarea
-            placeholder="Envía un mensaje a OdinIA"
-            style={{ width: "100%", minHeight: "100px" }}
-            className={`${styles.input_text} input_text_bg_dark ${styles.font_family}`}
-          ></textarea>
+        <div className={`d-flex flex-column gap-1 w-100 ${styles.container_chat_text}`}>
+          <form onSubmit={handleSubmit}>
+            <textarea
+              placeholder="Envía un mensaje a OdinIA"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              style={{ width: "100%", minHeight: "100px" }}
+              className={`${styles.input_text} input_text_bg_dark ${styles.font_family}`}
+              disabled={isLoading}
+            ></textarea>
 
-          {/* Botones de acción */}
-          <div className={`w-100 d-flex flex-wrap flex-sm-nowrap ${styles.container_chat_buttons} justify-content-between`}>
-            <div className="d-flex flex-row gap-2 w-100">
-              <button className="btn btn-secondary d-flex justify-content-center align-items-center">
-                <img src={IconUpload} alt="upload" width={14} />
-                <span className={`${styles.font_family} ms-2`}>Adjuntar</span>
-              </button>
+            {/* Botones de acción */}
+            <div className={`w-100 d-flex justify-content-between ${styles.container_chat_buttons} justify-content-between`}>
+              <div className="d-flex flex-row gap-2 w-100">
 
-              <button className="btn btn-secondary d-flex justify-content-center align-items-center">
-                <img src={IconLoupe} alt="search" width={14} />
-                <span className={`${styles.font_family} ms-2`}>Buscar</span>
-              </button>
+                <button type="submit" className="btn btn-secondary d-flex justify-content-center align-items-center">
+                  {
+                    isLoading ? (<div class="spinner-border spinner-border-sm" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>) : (<img src={IconLoupe} alt="search" width={14} />)
+                  }
+                  <span className={`${styles.font_family} ms-2`}>Buscar</span>
+                </button>
 
-              <button className="btn btn-secondary d-flex justify-content-center align-items-center">
-                <img src={IconFocus} alt="upload" width={14} />
-                <span className={`${styles.font_family} ms-2`}>Analiza</span>
-              </button>
+                {/*------Solo en desktop--------*/}
+                <div className="d-none d-lg-block">
+                  <div className="d-flex gap-2">
+                    <button className="btn btn-secondary d-flex justify-content-center align-items-center">
+                      <img src={IconUpload} alt="upload" width={14} />
+                      <span className={`${styles.font_family} ms-2`}>Adjuntar</span>
+                    </button>
+                    <button className="btn btn-secondary d-flex justify-content-center align-items-center">
+                      <img src={IconFocus} alt="upload" width={14} />
+                      <span className={`${styles.font_family} ms-2`}>Analiza</span>
+                    </button>
+                  </div>
+                </div>
+                {/*------Solo en desktop--------*/}
+              </div>
+
+              <div className="d-flex justify-content-end w-100 mt-md-0">
+                <button className="btn btn-dark d-flex justify-content-center align-items-center">
+                  <img src={IconProcess} alt="ear" width={13} />
+                  <span className={`${styles.font_family} ms-3`}> Voice </span>
+                </button>
+              </div>
             </div>
-
-            <div className="d-flex justify-content-center w-100 d-flex-md justify-content-md-end mt-2 mt-md-0">
-              <button className="btn btn-dark d-flex justify-content-center align-items-center">
-                <img src={IconProcess} alt="ear" width={13} />
-                <span className={`${styles.font_family} ms-3`}> Voice </span>
-              </button>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
 
-       {/*-------------------- Modal-1--------------------------*/}
+      {/*-------------------- Modal-1--------------------------*/}
       <div
         className="modal fade modal-dialog-scrollable"
         id="about"
