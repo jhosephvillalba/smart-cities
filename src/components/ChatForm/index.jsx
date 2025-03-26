@@ -126,6 +126,7 @@ import IconNotas from "../../assets/icons/smart-book-pencil.svg";
 import IconStar from "../../assets/icons/smart-star.svg";
 import IconImg from "../../assets/icons/smart-img-load.svg";
 import IconMore from "../../assets/icons/smart-more.svg";
+import MoreServices from "../../assets/icons/+.svg"
 
 const ChatForm = ({ sendMessage }) => {
   const [input, setInput] = useState(""); // Estado para el mensaje del usuario
@@ -231,7 +232,30 @@ const ChatForm = ({ sendMessage }) => {
                       <span className={`${styles.font_family} ms-2`}>Analiza</span>
                     </button>
                   </div>
-                </div>
+                </div> 
+
+                {/** */}
+                <div className="dropdown d-lg-none">
+                  <button className="btn btn-secondary dropdown-toggle-custom" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src={MoreServices} alt="more services" />
+                  </button>
+                  <ul className="dropdown-menu p-4">
+                    <li className="my-2">
+                      <a className="d-flex justify-content-start gap-3 text-decoration-none">
+                        <img src={IconUpload} alt="upload" />
+                        <span className={`${styles.font_family}`}>Adjuntar</span>
+                      </a>
+                    </li>
+                    <li className="my-2">
+                      <a className="d-flex justify-content-start gap-3 text-decoration-none">
+                        <img src={IconFocus} alt="upload" />
+                        <span className={`${styles.font_family}`}>Analiza</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div> 
+                {/** -----------------collapsable ----------------*/}
+
                 {/*------Solo en desktop--------*/}
               </div>
 
