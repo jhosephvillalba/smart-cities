@@ -160,13 +160,21 @@ const ChatForm = ({ sendMessage }) => {
     }
   };
 
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); // Evita el comportamiento por defecto
+      handleSubmit(e); // Llama a la función de envío
+    }
+  };
+
   return (
     <>
       {/* Se invierte el orden en pantallas md o más grandes */}
       <div className="w-100 d-flex flex-column flex-md-column-reverse" style={{ maxWidth: "770px" }}>
 
         {/* --------------------------Caja de botones (arriba en md)------------------------- */}
-        <div className="w-100 d-flex justify-content-center flex-wrap mt-lg-4 mb-3" style={{ maxWidth: "1200px" }}>
+        <div className="w-100 d-flex justify-content-center flex-wrap mt-lg-4 mt-3 mb-3" style={{ maxWidth: "1200px" }}>
           <div className="d-flex flex-row gap-2 flex-wrap justify-content-center align-items-center">
             <button className="btn btn-info d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#about">
               <img src={IconBook} alt="ear" width={13} />
@@ -205,6 +213,7 @@ const ChatForm = ({ sendMessage }) => {
               style={{ width: "100%", minHeight: "100px" }}
               className={`${styles.input_text} input_text_bg_dark ${styles.font_family}`}
               disabled={isLoading}
+              onKeyDown={handleKeyPress}
             ></textarea>
 
             {/* Botones de acción */}
@@ -213,7 +222,7 @@ const ChatForm = ({ sendMessage }) => {
 
                 <button type="submit" className="btn btn-secondary d-flex justify-content-center align-items-center">
                   {
-                    isLoading ? (<div class="spinner-border spinner-border-sm" role="status">
+                    isLoading ? (<div className="spinner-border spinner-border-sm" role="status">
                       <span class="visually-hidden">Loading...</span>
                     </div>) : (<img src={IconLoupe} alt="search" width={14} />)
                   }
