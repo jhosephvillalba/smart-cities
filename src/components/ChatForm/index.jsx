@@ -156,14 +156,15 @@ const ChatForm = ({ sendMessage }) => {
       });
     } finally {
       setIsLoading(false);
-      setInput(""); // Limpiar el input
+      
     }
   };
 
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      e.preventDefault(); // Evita el comportamiento por defecto
+      e.preventDefault();
+      setInput("");  // Evita el comportamiento por defecto
       handleSubmit(e); // Llama a la función de envío
     }
   };
@@ -220,7 +221,7 @@ const ChatForm = ({ sendMessage }) => {
             <div className={`w-100 d-flex justify-content-between ${styles.container_chat_buttons} justify-content-between`}>
               <div className="d-flex flex-row gap-2 w-100">
 
-                <button type="submit" className="btn btn-secondary d-flex justify-content-center align-items-center">
+                <button onClick={() => setInput("")} type="submit" className="btn btn-secondary d-flex justify-content-center align-items-center">
                   {
                     isLoading ? (<div className="spinner-border spinner-border-sm" role="status">
                       <span class="visually-hidden">Loading...</span>
@@ -280,7 +281,7 @@ const ChatForm = ({ sendMessage }) => {
       </div>
 
       {/*-------------------- Modal-1--------------------------*/}
-      <div
+      {/* <div
         className="modal fade modal-dialog-scrollable"
         id="about"
         data-bs-backdrop="false"
@@ -326,10 +327,10 @@ const ChatForm = ({ sendMessage }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/*-------------------- Modal-2--------------------------*/}
-      <div
+      {/* <div
         className="modal fade"
         id="helpWriter"
         data-bs-backdrop="false"
@@ -575,7 +576,7 @@ const ChatForm = ({ sendMessage }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

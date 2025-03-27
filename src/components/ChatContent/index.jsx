@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./styles.module.css";
 import ChatForm from "../ChatForm";
 import MarkdownRenderer from "../MarkdownRenderer"; // Importa el componente
 
 function ChatContent() {
   const [messages, setMessages] = useState([]);
+  const chatBoxRef = useRef(null); 
+
+  useEffect(() => {
+    if(chatBoxRef.current){
+      chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight; 
+    }
+  }, [messages])
 
   const handlerMessage = (newMessage) => {
     setMessages((prevMessages) => [...prevMessages, newMessage]);
@@ -19,7 +26,7 @@ function ChatContent() {
           </div>
 
           {/* Área de mensajes */}
-          <div className={`container-fluid d-flex flex-column gap-3 ${styles.chat_box}`}>
+          <div ref={chatBoxRef} className={`container-fluid d-flex flex-column gap-3 ${styles.chat_box}`}>
             {messages.map(({ message, isUser }, index) => (
                 <div
                   key={index}
