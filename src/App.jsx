@@ -23,7 +23,7 @@ function App() {
           </div>
           <ChatContent />
         </div>
-        <footer className="row mt-5 g-2">
+        <footer className="row mt-3 g-2">
           {/* Logo: Primero en móvil, último en escritorio */}
           <div className="col-12 col-md-2 mb-3 order-1 order-md-3">
             <div className="w-100 d-flex justify-content-md-end justify-content-center">
@@ -35,7 +35,7 @@ function App() {
           <div className="col-12 col-md-2 h-0 order-2 order-md-1"></div>
 
           {/* Texto centrado */}
-          <div className="col-12 col-md-8 order-3 order-md-2">
+          <div className="col-12 col-md-8 m-0 order-3 order-md-2">
             <div className="d-flex justify-content-center align-items-center w-100">
               <div className="text-center">
                 <p className="m-0">

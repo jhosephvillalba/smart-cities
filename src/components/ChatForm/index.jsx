@@ -121,11 +121,7 @@ import IconUpload from "../../assets/icons/smart-download.svg";
 import IconFocus from "../../assets/icons/smart-focus.svg";
 import IconProcess from "../../assets/icons/icon-process.svg";
 
-import IconBook from "../../assets/icons/smart-book.svg";
-import IconNotas from "../../assets/icons/smart-book-pencil.svg";
-import IconStar from "../../assets/icons/smart-star.svg";
-import IconImg from "../../assets/icons/smart-img-load.svg";
-import IconMore from "../../assets/icons/smart-more.svg";
+
 import MoreServices from "../../assets/icons/+.svg"
 
 const ChatForm = ({ sendMessage }) => {
@@ -134,6 +130,7 @@ const ChatForm = ({ sendMessage }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setInput("")
     if (!input.trim()) return; // Evitar mensajes vacíos
 
     setIsLoading(true);
@@ -175,34 +172,7 @@ const ChatForm = ({ sendMessage }) => {
       <div className="w-100 d-flex flex-column flex-md-column-reverse" style={{ maxWidth: "770px" }}>
 
         {/* --------------------------Caja de botones (arriba en md)------------------------- */}
-        <div className="w-100 d-flex justify-content-center flex-wrap mt-lg-4  mb-3" style={{ maxWidth: "1200px" }}>
-          <div className="d-flex flex-row gap-2 flex-wrap justify-content-center align-items-center">
-            <button className="btn btn-info d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#about">
-              <img src={IconBook} alt="ear" width={13} />
-              <span className={`text-white ${styles.font_size} ms-1`}> Resumen texto </span>
-            </button>
-
-            <button className="btn btn-info d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#helpWriter">
-              <img src={IconNotas} alt="ear" width={13} />
-              <span className={`text-white ${styles.font_size} ms-1`}> Ayúdame a escribir </span>
-            </button>
-
-            <button className="btn btn-info d-flex justify-content-center align-items-center">
-              <img src={IconStar} alt="ear" width={13} />
-              <span className={`text-white ${styles.font_size} ms-1`}> Sorpréndeme </span>
-            </button>
-
-            <button className="btn btn-info d-flex justify-content-center align-items-center">
-              <img src={IconImg} alt="ear" width={13} />
-              <span className={`text-white ${styles.font_size} ms-1`}> Análisis de imágenes </span>
-            </button>
-
-            <button className="btn btn-info d-flex justify-content-center align-items-center">
-              <img src={IconMore} alt="ear" width={13} />
-              <span className={`text-white ${styles.font_size} ms-1`}> Más </span>
-            </button>
-          </div>
-        </div>
+     
 
         {/* --------------------------Caja de texto (abajo en md)------------------------- */}
         <div className={`d-flex flex-column gap-1 w-100 ${styles.container_chat_text}`}>
@@ -221,7 +191,7 @@ const ChatForm = ({ sendMessage }) => {
             <div className={`w-100 d-flex justify-content-between ${styles.container_chat_buttons} justify-content-between`}>
               <div className="d-flex flex-row gap-2 w-100">
 
-                <button onClick={() => setInput("")} type="submit" className="btn btn-secondary d-flex justify-content-center align-items-center">
+                <button type="submit" className="btn btn-secondary d-flex justify-content-center align-items-center">
                   {
                     isLoading ? (<div className="spinner-border spinner-border-sm" role="status">
                       <span class="visually-hidden">Loading...</span>

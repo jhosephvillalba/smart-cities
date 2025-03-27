@@ -9,11 +9,7 @@
 
 
 .content_chat_heigth {
-    height: calc(100vh - 13rem) !important; 
+    height: calc(100vh - 13rem) !important;
+    overflow-y: auto;
 }
 
-.chat_box {
-    height: calc(100vh - 32rem) !important;
-    overflow-y: auto;
-    /* scroll-behavior: smooth; */
-}
