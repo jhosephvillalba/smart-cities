@@ -26,9 +26,9 @@ function ChatContent() {
   return (
     <>
       <div className={`d-flex flex-column justify-content-between ${styles.content_chat_heigth}`}>
-        <div className={`d-flex flex-column w-100 align-items-between my-3 ${styles.chat_container}`}>
-          <div className={`d-flex justify-content-center ${messages.length === 0 ? styles.title_visibility : styles.title_hidden}`}>
-            <p className="h2 main_title">¿Con qué puedo ayudarte?</p>
+        <div className={`d-flex flex-column w-100 my-3 ${styles.chat_container}`}>
+          <div className={`d-flex justify-content-center my-5 ${messages.length === 0 ? styles.title_visibility : styles.title_hidden}`}>
+            <p className="h2 main_title text-center">¿Con qué puedo ayudarte?</p>
           </div>
 
           {/* Área de mensajes */}
@@ -48,37 +48,7 @@ function ChatContent() {
             ))}
           </div>
         </div>
-        <div className="d-flex flex-column justify-content-center">
-          <div className={`d-flex justify-content-center ${messages.length === 0 ? styles.title_visibility : styles.title_hidden}`}>
-            <div className="w-100 d-flex justify-content-center flex-wrap mt-lg-4  mb-3" style={{ maxWidth: "1200px" }}>
-              <div className="d-flex flex-row gap-2 flex-wrap justify-content-center align-items-center">
-                <button className="btn btn-info d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#about">
-                  <img src={IconBook} alt="ear" width={13} />
-                  <span className={`text-white ${styles.font_size} ms-1`}> Resumen texto </span>
-                </button>
-
-                <button className="btn btn-info d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#helpWriter">
-                  <img src={IconNotas} alt="ear" width={13} />
-                  <span className={`text-white ${styles.font_size} ms-1`}> Ayúdame a escribir </span>
-                </button>
-
-                <button className="btn btn-info d-flex justify-content-center align-items-center">
-                  <img src={IconStar} alt="ear" width={13} />
-                  <span className={`text-white ${styles.font_size} ms-1`}> Sorpréndeme </span>
-                </button>
-
-                <button className="btn btn-info d-flex justify-content-center align-items-center">
-                  <img src={IconImg} alt="ear" width={13} />
-                  <span className={`text-white ${styles.font_size} ms-1`}> Análisis de imágenes </span>
-                </button>
-
-                <button className="btn btn-info d-flex justify-content-center align-items-center">
-                  <img src={IconMore} alt="ear" width={13} />
-                  <span className={`text-white ${styles.font_size} ms-1`}> Más </span>
-                </button>
-              </div>
-            </div>
-          </div>
+        <div className="d-flex justify-content-center">
           <ChatForm sendMessage={handlerMessage} />
         </div>
       </div>
