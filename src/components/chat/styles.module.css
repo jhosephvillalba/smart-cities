@@ -1,0 +1,38 @@
+.switch_size {
+    width: 60px !important;
+    height: 30px !important;
+}
+
+.input_text {
+    background: transparent;
+    border: none;
+    padding: 1.2rem;
+}
+
+.input_text:focus {
+    outline: none;
+}
+
+.container_chat_text {
+    border-radius: 21px;
+    background-color: #fff;
+    
+}
+
+.container_chat_buttons {
+    border-radius:21px;
+    background: var(--gradiente);
+    padding: 0.8rem 1rem;
+}
+
+.font_family {
+    font-family: PoppinsRegular;
+    font-size: 1rem;
+    /* color: var(--color-black);    */
+}
+
+.font_family_text_btn{
+    font-size: 0.8rem;
+    color: var(--color-black) !important;
+}
+

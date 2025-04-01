@@ -1,0 +1,50 @@
+.container {
+    background-color: white;
+    border-radius: 10px;
+    height: calc(100vh - 10rem);
+}
+
+.switch_size {
+    width: 60px !important;
+    height: 30px !important;
+}
+
+.main_title {
+    font-family: PoppinsBold;
+    font-size: 32px;
+    color: white !important;
+}
+
+
+.chatContainer {
+    overflow-y: auto;
+    height: 50vh;
+    min-height: 200px;
+    scroll-behavior: smooth;
+    padding-bottom: 20px; /* Espacio para el último mensaje */
+}
+
+
+.chatContainer > * {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* Para navegadores WebKit (Chrome, Safari) */
+.chatContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chatContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.chatContainer::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.chatContainer::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

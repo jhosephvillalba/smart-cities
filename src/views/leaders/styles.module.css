@@ -1,0 +1,39 @@
+.title_section {
+    font-size: 15px;
+}
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    height: calc(100vh - 10rem);
+}
+
+.data_container {
+    overflow-y: scroll;
+    height: calc(100vh - 21rem);
+}
+
+.input_custon_styles {
+    border: none !important;
+    border-radius: none !important;
+    padding-left: 0 !important;
+}
+
+.input_custon_styles:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.input_custon_styles:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    
+}
+
+.button_custon_styles {
+    border: none !important;
+}
+
+.button_custon_styles:hover {
+    background-color: transparent !important;
+}

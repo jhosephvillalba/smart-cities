@@ -1,16 +1,40 @@
-/* :root {
-  --font-family: PoppinsRegular, system-ui, Helvetica, sans-serif;
-  font-weight: 400;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  --color-primary-btn:#03609D;
-  --color-secondary-btn: transparent;
-  --color-text-light:#fff; 
-  --color-text-dark:#03609D;
-  --bg-light: #fff;
-  ; 
+/* -------------------------------------------*/
+:root{
+  --color-background: #F8F8F8;
+  --color-background-content: #F2F2F2;
+  --color-black: #000;
+  --color-grey-light: #B6B6B6;
+  --color-white: #fff; 
+  --border-color: #E7E7E7;
+  --color-titles: #444444;  
+  --gradiente: linear-gradient(90deg, #FDE487 30.47%, #EAA34A 100%);
+
+}
+
+body, html,  .main-container{
+  height: 100% !important;
+  background-color: var(--color-background-content);
+  /* background-color: #010; */
+}
+
+::-webkit-scrollbar{
+  width: 5px;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--border-color); /* Color del fondo del contenedor del scroll */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: var(--color-black);
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background-color: var(--color-titles);
+  border-radius: 50px;
 }
 
 @font-face {
@@ -23,375 +47,272 @@
   src: url(./assets/fonts/Poppins/Poppins-Regular.ttf);
 }
 
-
-
-.btn-primary, .btn-secondary, .btn-info, .btn-dark{
-  border-radius: 55px;
-  font-size: 14px !important;
+.main-container .menu{
+  background: var(--color-background);
+  max-width: 248px;
+  position: absolute;
+  left: 0;
 }
 
-
-.btn-primary {
-  background: var(--color-primary-btn);
-  color:var(--color-text-light); 
+.menu .menu__header img{
+  width: 1.3rem;
 }
 
-.btn-secondary {
-  background-color: var(--color-secondary-btn);
-  color: var(--color-text-dark);
-  border: 1px solid var(--color-text-dark);
-}
-
-.btn-info {
-  background-color: var(--color-secondary-btn);
-  border: 1px solid var(--color-text-dark);
-}
-
-.btn-info span {
-  color: var(--color-primary-btn) !important;
-}
-
-.text_footer {
-  color: #b6b6b6;
-  font-size: 14px;
-}
-
-.text_footer a span {
-  color: #b6b6b6;
-  font-size: 14px;
-  text-decoration: underline #b6b6b6;
-}
-
-
-body {
-  margin: 0;
-  font-family: var(--font-family) !important;  
-  font-size: var(--bs-body-font-size);
-  font-weight: var(--bs-body-font-weight);
-  line-height: var(--bs-body-line-height);
-  color: var(--bs-body-color);
-  text-align: var(--bs-body-text-align);
-  background-color: var(--bs-body-bg);
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-} */
-
-
-/* :root {
-  --font-family: "PoppinsRegular", system-ui, Helvetica, sans-serif;
-  --color-primary-btn: #03609D;
-  --color-secondary-btn: transparent;
-  --color-text-light: #fff;
-  --color-text-dark: #03609D;
-  --bg-light: #fff;
-  font-weight: 400;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-
-@font-face {
-  font-family: "PoppinsBold";
-  src: url(./assets/fonts/Poppins/Poppins-Bold.ttf);
-}
-
-@font-face {
-  font-family: "PoppinsRegular";
-  src: url(./assets/fonts/Poppins/Poppins-Regular.ttf);
-}
-
-
-.dropdown-toggle::after {
-  content: url('./assets/icons/smart-arrow.svg') !important; 
-  border: 0 !important; 
-  width: 12px;
-  height: 12px;
-  margin-left: 1.2rem !important;
-  vertical-align: 0 !important; 
-}
-
-
-.btn {
-  border-radius: 55px;
-  font-size: 14px !important;
-}
-
-.btn-primary {
-  background: var(--color-primary-btn);
-  color: var(--color-text-light);
-}
-
-.btn-secondary, .btn-info {
-  background-color: var(--color-secondary-btn);
-  border: 1px solid var(--color-text-dark);
-  color: var(--color-text-dark);
-}
-
-.btn-info span {
-  color: var(--color-primary-btn) !important;
-}
-
-.btn-dark {
-  background: var(--color-text-dark);
-  color: var(--color-text-light);
-}
-
-
-.text_footer {
-  color: #b6b6b6;
-  font-size: 14px;
-}
-
-.text_footer a span {
-  color: inherit;
-  text-decoration: underline;
-}
-
-
-body {
-  margin: 0;
-  font-family: var(--font-family) !important;
-  font-size: var(--bs-body-font-size);
-  font-weight: var(--bs-body-font-weight);
-  line-height: var(--bs-body-line-height);
-  color: var(--bs-body-color);
-  text-align: var(--bs-body-text-align);
-  background-color: var(--bs-body-bg);
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-}
-
-
-#root {
-  background-image: url(./assets/img/background-planet-earth.png);
-  background-repeat: no-repeat;
+.main-container .content{
+  background-image: url(./assets/img/fondo-leon.jpg);
+  /* background-repeat: no-repeat; */
   background-size: cover;
   background-position: bottom;
-  width: 100%;
+  width: calc(100% - 248px);
   z-index: 2;
-  height: 100vh;
+  margin-left: auto;
+  transition: width .4s ease-in-out;
 }
 
-.main-container {
-  background-color: var(--bg-light);
-  height: 100vh;
-  opacity: 0.9;
+/* La clase "background-content" al colocarlo al div que tiene la clase "content", cambiara el fondo blanco y el logo negro */
+
+.main-container .background-content {
+  background: var(--color-background-content);
 }
 
-.main-container header {
-  background-color: var(--bg-light);
+.main-container .content .text_section p{
+  color: var(--color-white);
 }
 
-.main_title {
-  color: var(--color-text-dark);
-  font-family: PoppinsBold;
-} */
-
-
-:root {
-  --font-family: "PoppinsRegular", system-ui, Helvetica, sans-serif;
-  --color-primary-btn: #03609D;
-  --color-secondary-btn: transparent;
-  --color-text-light: #fff;
-  --color-text-dark: #03609D;
-  --bg-light: #fff;
-  --bg-dark: rgba(0, 0, 0, 0.6); /* Overlay oscuro para mejorar legibilidad */
-  --transition-time: 0.5s; /* Tiempo de transición */
-  font-weight: 400;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.main-container .background-content .text_section p{
+  color: var(--color-black);
 }
 
 
-
-/* Fuentes */
-@font-face {
-  font-family: "PoppinsBold";
-  src: url(./assets/fonts/Poppins/Poppins-Bold.ttf);
+.main-container .h2{
+   color: var(--color-white);
 }
 
-@font-face {
-  font-family: "PoppinsRegular";
-  src: url(./assets/fonts/Poppins/Poppins-Regular.ttf);
+.main-container .background-content .h2{
+  color: var(--color-black) !important 
 }
 
-/* Estilo del dropdown toggle */
-.dropdown-toggle::after {
-  content: url('./assets/icons/smart-arrow.svg') !important; 
-  border: 0 !important; 
-  width: 12px;
-  height: 12px;
-  margin-left: 1.2rem !important;
-  vertical-align: 0 !important; 
+
+.main-container .content .btn-info{
+  color: var(--color-white);
+  background: transparent;
+  border: solid 1px #fff;
+  border-radius: 21px;
 }
 
-/* Botones */
-.btn {
-  border-radius: 55px;
-  font-size: 14px !important;
-  transition: background-color var(--transition-time), color var(--transition-time);
+
+.main-container .content .btn-info img{
+  filter: invert();
 }
 
-.btn-primary {
-  background: var(--color-primary-btn);
-  color: var(--color-text-light);
+.main-container .background-content .btn-info img{
+  filter: none;
 }
 
-.btn-secondary, .btn-info {
-  background-color: var(--color-secondary-btn);
-  border: 1px solid var(--color-text-dark);
-  color: var(--color-text-dark);
+.main-container .background-content .btn-info{
+  background: transparent;
+  border: solid 1px var(--color-black);
+  border-radius: 21px;
+
 }
 
-.btn-info span {
-  color: var(--color-primary-btn) !important;
+.main-container .background-content .btn-info span{
+  color: var(--color-black) !important;
 }
 
-.btn-dark {
-  background: var(--color-text-dark);
-  color: var(--color-text-light);
+
+
+
+.main-container .background-content .nav-link img,
+.main-container .background-content .dropdown-toggle::after{
+  /* filter: invert(); */
 }
 
-/* Footer */
-.text_footer {
-  color: #b6b6b6;
-  font-size: 14px;
-}
 
-.text_footer a span {
-  color: inherit;
-  text-decoration: underline;
-}
 
-/* Global */
-body {
-  margin: 0;
-  font-family: var(--font-family) !important;
-  font-size: var(--bs-body-font-size);
-  font-weight: var(--bs-body-font-weight);
-  line-height: var(--bs-body-line-height);
-  color: var(--color-text-dark); /* Color inicial */
-  text-align: var(--bs-body-text-align);
-  background-color: var(--bs-body-bg);
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-  transition: background-color var(--transition-time), color var(--transition-time);
-}
+/* ------------------------------------------------------------------ */
 
-#root {
-  background-image: url(./assets/img/background-planet-earth.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: bottom;
+/* La clase "width-complete" al colocarlo al div que tiene la clase "content", se cerrara el menú */
+
+.main-container .width-complete{
   width: 100%;
-  z-index: 2;
 }
 
-.main-container {
-  height: 100%; 
-  min-height: max-content;
-  transition: opacity var(--transition-time);
-}
+/* ------------------------------------------------------------------ */
 
-.main_title {
-  color: var(--color-text-dark);
-  font-family: PoppinsBold;
-  transition: color var(--transition-time);
-}
-
-.main-container-bg {
-  opacity: 0.9;
-  background-color: var(--bg-light);
-  transition: background-color 1s ease-in-out;
-}
-
-.transparent {
-  background-color: rgba(255, 255, 255, 0); /* Se vuelve transparente */
-}
-
-.transparent div p {
-  /* color: #fff; */
-}
-
-.transparent footer {
-  background-color: var(--bg-dark);
-}
-
-
-
-/* Asegura que el cuerpo ocupe toda la altura */
-body, #root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Contenedor principal - Flexbox column */
-.main-container {
-  display: flex;
-  flex-direction: column;
-  flex: 1; /* Ocupa todo el espacio disponible */
-  position: relative;
-}
-
-/* Contenedor del chat - Debe ser scrollable */
-/* .chat-container {
-  flex: 1;
-  overflow-y: auto; /* Permite scroll si el contenido es largo
-  padding-bottom: 80px;  Espacio para el footer (ajusta según su altura)
-} */
-
-/* Footer - Siempre abajo */
-footer {
-  /* position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px;  */
+.main-container .navbar{
   background-color: transparent !important;
-  /* z-index: 2; */
-  
 }
 
+.main-container .navbar img{
+  width: 16rem;
+}
 
-.dropdown-toggle-custom {
+.profile{
+  width: 45px;
+  height: 45px;
+  background: #D9D9D9;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.profile span{
+  font-family: PoppinsBold;
+  color: var(--color-black);
+  font-size: 16px;
+}
+
+.dropdown-toggle::after {
+  content: url('./assets/icons/icon-arrow-logo.svg') !important; 
+  border: 0 !important; 
+  width: 12px;
+  height: 12px;
+  margin-left: 10px !important;
+  vertical-align: 0 !important; 
+}
+
+.dropdown-menu{
+  width: max-content !important;
+}
+
+.custom-dropdown-toggle{
   white-space: nowrap;
 }
 
-.dropdown-toggle-custom::after {
-  display: inline-block;
-  /* margin-left: .255em; */
-  vertical-align: .255em;
-  content: none;
-  border-top: .3em solid;
-  border-right: .3em solid transparent;
-  border-bottom: 0;
-  border-left: .3em solid transparent;
+.custom-dropdown-toggle::after {
+  content: ""; 
+  border: 0 !important; 
+  /* width: 12px;
+  height: 12px; */
+  /* margin-left: 10px !important; */
+  vertical-align: 0 !important; 
+}
+
+.menu__content{
+  height: calc(100% - 4.6rem);
+}
+
+.menu__content .menu__item img{
+  width: 2rem;
+}
+
+.menu__content .menu__item span{
+  font-size: 14px;
+  font-family: PoppinsRegular;
+}
+
+.btn-dark {
+  width: 7rem !important;
+  border-radius: 21px !important;
+  padding: 0.7rem 0.5rem !important;
+}
+
+
+.form-check-input:checked {
+  background-color: transparent !important;
+  border-color: #000 !important;
+  filter: invert(1);
+}
+
+
+.form-switch .form-check-input {
+  --bs-form-switch-bg: url(./assets/icons/circle.svg) !important;
+  width: 2em;
+  margin-left: -2.5em;
+  background-image: var(--bs-form-switch-bg);
+  background-position: left center;
+  border-radius: 2em;
+  transition: background-position .15s ease-in-out;
+}
+
+
+.btn-primary {
+  border: solid 1px #15507A !important;
+  border-radius: 21px;
+  background: transparent !important;
+ 
+}
+
+.btn-primary span {
+  color: #15507A !important;
+}
+
+.btn-secondary {
+  background-color: #15507A !important;
+  border-radius: 21px;
+}
+
+/* --------------------------------------------Label forms------------------------------------------------- */
+
+.form-label {
+  margin-bottom: 0 !important;
+  margin-left: .5rem !important;
+  font-size: 12px !important;
+}
+
+.fw-bolder {
+  font-family: PoppinsBold !important;
+  /* color: var(--color-black) !important; */
+}
+
+
+.container {
+  max-width: 95% !important;  /* Ancho personalizado */
 }
 
 .row {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+  margin-right: 0;
+  margin-left: 0;
 }
 
-::-webkit-scrollbar{
-  width: 5px;
-  border-radius: 100px;
+.accordion-item {
+  background-color: #EEE !important;
+  /* border: 1px solid black !important; */
+  border-radius: 13px !important;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--bg-light); /* Color del fondo del contenedor del scroll */
-  border-radius: 10px; /* Bordes redondeados */
+.accordion-button {
+  background-color: transparent !important;
+  padding: 1rem 1.5rem !important;
 }
 
-::-webkit-scrollbar-thumb{
-    background-color: var(--color-text-dark);
-    border-radius: 50px;
+.accordion-button:focus {
+  box-shadow: none !important;
 }
 
+.w-lg-100 {
+  width: auto;
+}
+
+/* .position_text_input {
+  position: static;
+} */
+
+.vh-lg-100 {
+   height: 100% !important;
+}
+
+
+@media (max-width: 992px) {
+  .w-lg-100 {
+      width: 100% !important; /* En pantallas grandes, ajusta el tamaño según su contenido */
+  }
+
+  .vh-lg-100 {
+    height: auto;
+  }
+  /* .position_text_input {
+      position: absolute;
+      top: calc(100vh - 20rem);
+  } */
+}
+
+.offcanvas {
+  background-color: var(--color-background);
+}
+
+
+/* Estilos de la respuesta de bot */
 
 .markdown-container {
   font-family: Arial, sans-serif;
@@ -400,8 +321,9 @@ footer {
 
 .markdown-container h1, 
 .markdown-container h2, 
-.markdown-container h3 {
-  color: #333;
+.markdown-container h3,
+.markdown-container p {
+  color: #333 !important; 
   margin-top: 1em;
 }
 
@@ -422,4 +344,8 @@ footer {
   padding: 1em;
   border-radius: 5px;
   overflow-x: auto;
+}
+
+.nav-link {
+  font-size: 14px;
 }

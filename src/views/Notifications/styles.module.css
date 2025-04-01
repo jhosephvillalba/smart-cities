@@ -1,0 +1,38 @@
+.container {
+    background-color: white;
+    border-radius: 10px;
+    height: calc(100vh - 10rem);
+}
+.section_data {
+    height: calc(100vh - 10rem);
+    overflow-y: auto;
+}
+.section_data p {
+    font-size: 13px;
+}
+
+.section_data button {
+    font-size: 12px;
+    width: max-content;
+}
+
+.text_container {
+    line-height: 1.1;
+}
+
+.text_description {
+    font-size: 10px;
+}
+
+.button_action {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    min-width: 200px;
+    max-width: 200px;
+    padding: 0.3rem 1.5rem;
+    border-radius: 5px;
+}
+
+.width_section {
+    width: 85%;
+}

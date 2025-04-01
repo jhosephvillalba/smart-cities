@@ -1,0 +1,41 @@
+.button_generate {
+    background-color: var(--color-black) !important;
+    
+}
+
+.button_generate span {
+    color: var(--color-white);
+}
+
+.input_custon_styles {
+    border: none !important;
+    border-radius: none !important;
+    padding-left: 0 !important;
+}
+
+.input_custon_styles:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    
+}
+
+.button_custon_styles {
+    border: none !important;
+}
+
+.button_custon_styles:hover {
+    background-color: transparent !important;
+} 
+
+.options {
+    border: 1px solid var(--color-black) !important;
+    border-radius: 5px !important;
+}
+
+.options:focus {
+    box-shadow: none;
+}
+
+.text_btn {
+    font-weight: 600;
+}

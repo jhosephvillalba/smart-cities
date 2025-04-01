@@ -1,0 +1,17 @@
+.container_button {
+    background-color: white;
+    border-radius: 10px;
+    height: calc(100vh - 10rem);
+}
+
+.button {
+    height: max-content;
+}
+
+.button_img {
+    width: 80px;
+}
+
+.title_section {
+    font-size: 15px;
+}

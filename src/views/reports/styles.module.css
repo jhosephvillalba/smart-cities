@@ -1,0 +1,37 @@
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    height: calc(100vh - 9.5rem);
+}
+
+.scroll_table {
+    height: calc(100vh - 10rem) !important;
+    overflow-y: auto;
+}
+
+/* .scroll_table thead{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--color-white);
+} */
+
+.scroll_table tbody td {
+    font-size: 12px;
+}
+
+.btn_info{
+    background: var(--color-black);
+    color: var(--color-white);
+    border-radius: 3px;
+    padding: 0.3rem 1.5rem;
+    font-size: 12px;
+}
+
+.td_data {
+    width: 15%;
+}
+
+.td_info {
+    width: 25%;
+}

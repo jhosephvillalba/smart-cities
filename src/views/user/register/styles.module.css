@@ -1,0 +1,52 @@
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    height: calc(100vh - 10rem);
+}
+
+.scroll_container_search, .scroll_container {
+    overflow-y: auto;
+    height: calc(100vh - 16rem);
+}
+
+.scroll_container_search {
+    height: calc(100vh - 21.2rem);
+    padding-right: 2rem;
+}
+
+.search_container{
+    padding-left: 6rem !important;
+    padding-right: 1rem !important;
+} 
+
+
+.button_save {
+    font-size: 12px !important;
+    background-color: var(--color-black) !important;
+    border-radius: 5px;
+    padding: .3rem 1rem !important;
+}
+
+.text_btn {
+    color: var(--color-white);
+}
+
+.input_custon_styles {
+    border: none !important;
+    border-radius: none !important;
+    padding-left: 0 !important;
+}
+
+.input_custon_styles:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    
+}
+
+.button_custon_styles {
+    border: none !important;
+}
+
+.button_custon_styles:hover {
+    background-color: transparent !important;
+} 
