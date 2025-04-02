@@ -375,6 +375,7 @@
 // export default BoxMessage;
 
 import React, { useState, useEffect, useRef } from 'react';
+import SendIcon from '../../assets/icons/send-icon.svg'
 
 const barrios = [
   { "id": 1, "barrio": "Belchite" },
@@ -509,8 +510,11 @@ const BoxMessage = ({
               <div className="modal-footer">
                 <form onSubmit={handleSendMessage} className="w-100">
                   <div className="input-group">
-                    <input type="text" className="form-control" placeholder={inputPlaceholder} value={messageInput} onChange={(e) => setMessageInput(e.target.value)} />
-                    <button type="submit" className="btn btn-primary">Enviar</button>
+                    <textarea type="text" className="form-control" placeholder={inputPlaceholder} value={messageInput} onChange={(e) => setMessageInput(e.target.value)} />
+                    <button type="submit" className="btn btn-primary d-flex justify-content-center align-items-center gap-2">
+                      <p className='m-0 text-black'>Enviar</p>
+                      <img src={SendIcon} alt="send"  width={20}/>
+                    </button>
                   </div>
                 </form>
               </div>
