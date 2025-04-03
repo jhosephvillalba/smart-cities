@@ -102,11 +102,13 @@ body, html,  .main-container{
 
 
 .main-container .content .btn-info img{
-  filter: invert();
+  /* filter: invert(); */
+  filter: none;
+
 }
 
 .main-container .background-content .btn-info img{
-  filter: none;
+   /* filter: invert(); */
 }
 
 .main-container .background-content .btn-info{
@@ -123,9 +125,9 @@ body, html,  .main-container{
 
 
 
-.main-container .background-content .nav-link img,
+.main-container .background-content .nav-link,
 .main-container .background-content .dropdown-toggle::after{
-  /* filter: invert(); */
+  /* filter: invert(1); */
 }
 
 
@@ -145,8 +147,13 @@ body, html,  .main-container{
 }
 
 .main-container .navbar img{
-  width: 14rem;
+  width: 13rem;
 }
+
+/* .main-container .navbar img{
+  width: 13rem;
+} */
+
 
 .profile{
   width: 45px;
@@ -163,6 +170,15 @@ body, html,  .main-container{
 }
 
 .dropdown-toggle::after {
+  content: url('./assets/icons/flecha-negra.svg') !important; 
+  border: 0 !important; 
+  width: 12px;
+  height: 12px;
+  margin-left: 10px !important;
+  vertical-align: 0 !important; 
+}
+
+.dropdown-toggle-2::after {
   content: url('./assets/icons/icon-arrow-logo.svg') !important; 
   border: 0 !important; 
   width: 12px;

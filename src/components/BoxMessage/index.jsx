@@ -446,7 +446,7 @@ const BoxMessage = ({
 
   return (
     <div className={`position-fixed ${positions[buttonPosition]} mb-5 me-3`}>
-      <button className={`btn btn-${buttonColor} rounded-pill shadow-lg`} onClick={onClose}>
+      <button className={`btn btn-${buttonColor} rounded-pill shadow-lg`} onClick={onClose} style={{visibility:"hidden"}}>
         <i className={`bi ${buttonIcon} me-2`}></i>
         {buttonText}
       </button>

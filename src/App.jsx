@@ -5,10 +5,17 @@ import IconExplore from "./assets/icons/explore-btn-smart.svg";
 import IconLoupe from "./assets/icons/icon-loupe.svg";
 import IconOdinIa from "./assets/icons/btn-logo-smart.svg";
 import IconPencilBlack from "./assets/icons/icon-pencil-black.svg";
+
+
+
 import IconStar from "./assets/icons/start-smart.svg";
 import IconSwitchBlack from "./assets/icons/icon-switch-black.svg";
-import LogoWhite from "./assets/icons/alcaldia-rio-negro-logo.svg";
+
+import LogoWhite from "./assets/icons/logo_rionego.svg";
+import LogoWhite2 from "./assets/icons/alcaldia-rio-negro-logo.svg"
+
 import PensilAndNoteBook from "./assets/icons/pencil-and-notepack.svg";
+import PensilAndNoteBook2 from "./assets/icons/tableta-lapiz-negro.svg";
 import NavbarSideBar from "./components/navbarSidebar";
 
 
@@ -49,7 +56,7 @@ const App = () => {
 
               <div className="d-flex flex-row">
                 <button type="button" className="btn btn-light">
-                  <img src={IconPencilBlack} alt="" />
+                  <img className="logo-header" src={IconPencilBlack} alt="" />
                 </button>
                 <button type="button" className="btn btn-light">
                   <img src={IconLoupe} alt="" />
@@ -151,16 +158,20 @@ const App = () => {
             <header className="navbar bg-body-tertiary">
               <nav className="container-fluid px-3 dropdown">
                 <a className="nav-link btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                  <img src={PensilAndNoteBook} style={{ width: "33px" }} alt="OdinIa" />
+                  {
+                    darkMode == true ? (<img src={PensilAndNoteBook} style={{ width: "33px" }} alt="OdinIa" />) : (<img src={PensilAndNoteBook2} style={{ width: "33px" }} alt="OdinIa" />)
+                  }
                 </a>
                 <a
-                  className="nav-link dropdown-toggle"
+                  className={`nav-link ${darkMode == true ? "dropdown-toggle-2" : "dropdown-toggle"}`}
                   href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <img src={LogoWhite} alt="logo" />
+                  {
+                    darkMode == true ? (<img src={LogoWhite2} alt="logo" />) : (<img src={LogoWhite} alt="logo" />)
+                  }
                 </a>
                 <ul className="dropdown-menu ms-3">
                   <li>
