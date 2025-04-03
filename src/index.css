@@ -102,13 +102,13 @@ body, html,  .main-container{
 
 
 .main-container .content .btn-info img{
-  /* filter: invert(); */
-  filter: none;
+  filter: invert();
 
 }
 
 .main-container .background-content .btn-info img{
-   /* filter: invert(); */
+  filter: none;
+
 }
 
 .main-container .background-content .btn-info{
@@ -125,7 +125,7 @@ body, html,  .main-container{
 
 
 
-.main-container .background-content .nav-link,
+.main-container .background-content .nav-link img,
 .main-container .background-content .dropdown-toggle::after{
   /* filter: invert(1); */
 }
