@@ -25,7 +25,7 @@ import "./App.css";
 
 const App = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
   const [login, setLogin] = useState(false);
 
   const handlerDarkMode = () => {
