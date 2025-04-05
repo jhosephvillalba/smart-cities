@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import BlackIcon from "../../assets/icons/back.svg"; 
-import SmartCities from "../../assets/icons/smart-cities.svg"; 
+import BlackIcon from "../../assets/icons/back.svg";
+import SmartCities from "../../assets/icons/smart-cities.svg";
 import styles from "./styles.module.css";
 
 const Login = () => {
@@ -92,14 +92,14 @@ const Login = () => {
 
                         <div className="d-flex gap-2 ps-4 mt-3">
                             <Link to="/">
-                              ¿Resetear contraseña?
+                                ¿Resetear contraseña?
                             </Link> <p>|</p>
 
                             <Link to="/">
-                              Privacidad
+                                Privacidad
                             </Link>
                         </div>
-                        
+
                         <div className="text-start ps-4 mt-4 mb-5">
                             <Link to={"/sign-in"}>
                                 Regístrese para obtener una cuenta
@@ -113,10 +113,11 @@ const Login = () => {
                     </form>
                 </div>
             </div>
-                <div className="d-flex justify-content-center w-100 my-lg-1 my-3 justify-content-lg-end p-2">
+            <div className="d-flex justify-content-center w-100 my-lg-1 my-3 justify-content-lg-end p-2">
+                <a href="https://eso.gov.co/" target='_blank'>
                     <img src={SmartCities} width={150} alt="smart-cities" />
-                  </div>
-
+                </a>
+            </div>
         </div>
     );
 };

@@ -88,7 +88,9 @@ body, html,  .main-container{
   filter: invert();
 }
 
-
+.main-container .background-content .text_section a img:not([src^="https://eso.gov.co/"]) {
+  filter: none;
+}
 
 .main-container .h2{
    color: var(--color-white);

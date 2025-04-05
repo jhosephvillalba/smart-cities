@@ -314,7 +314,9 @@ const ViewChat = ({ sendMessage, chatInit, activeChatBox }) => {
         </div>
         <div style={{ display: chatInit > 0 ? "none" : "block" }} className="w-100">
           <div className="d-flex justify-content-center px-5 w-100 my-lg-1 my-3 justify-content-lg-end">
-            <img src={SmartCities} alt=""  width={150}/>
+            <a href="https://eso.gov.co/" target='_blank'>
+              <img src={SmartCities} width={150} alt="smart-cities" />
+            </a>
           </div>
         </div>
       </div>

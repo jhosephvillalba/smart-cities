@@ -131,8 +131,8 @@ const SignIn = () => {
           ) : (
             <div className='mt-1 d-flex flex-column gap-3'>
               <div className='text-center mb-4'>
-                  <p className="fs-4 fw-bolder">¡Ya casi terminas!</p>
-                </div>
+                <p className="fs-4 fw-bolder">¡Ya casi terminas!</p>
+              </div>
               <form onSubmit={handleSecondarySubmit} noValidate>
 
                 <div className="mb-4">
@@ -183,8 +183,10 @@ const SignIn = () => {
           )}
         </div>
       </div>
-      <div className="d-flex justify-content-center w-100 my-lg-1 my-2 justify-content-lg-end p-2">
-        <img src={SmartCities} width={150} alt="smart-cities" />
+      <div className="d-flex justify-content-center w-100 my-lg-1 my-3 justify-content-lg-end p-2">
+        <a href="https://eso.gov.co/" target='_blank'>
+          <img src={SmartCities} width={150} alt="smart-cities" />
+        </a>
       </div>
     </div>
   );
