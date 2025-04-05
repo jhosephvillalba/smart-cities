@@ -28,7 +28,7 @@ body, html,  .main-container{
 }
 
 ::-webkit-scrollbar-thumb{
-    background-color: var(--color-black);
+    background-color: var(--color-titles);
     border-radius: 50px;
 }
 
@@ -84,6 +84,12 @@ body, html,  .main-container{
 }
 
 
+.main-container .background-content .text_section a img {
+  filter: invert();
+}
+
+
+
 .main-container .h2{
    color: var(--color-white);
 }
@@ -103,7 +109,6 @@ body, html,  .main-container{
 
 .main-container .content .btn-info img{
   filter: invert();
-
 }
 
 .main-container .background-content .btn-info img{
@@ -171,20 +176,33 @@ body, html,  .main-container{
 
 .dropdown-toggle::after {
   content: url('./assets/icons/flecha-negra.svg') !important; 
+
   border: 0 !important; 
-  width: 12px;
-  height: 12px;
-  margin-left: 10px !important;
+  width: 10px;
+  height: 10px;
+  margin-left: 8px !important;
   vertical-align: 0 !important; 
+}
+
+.dropdown-toggle-custom-account::after {
+  /* content: url('./assets/icons/flecha-negra.svg') !important; 
+
+  border: 0 !important; 
+  width: 10px;
+  height: 10px;
+  margin-left: 8px !important;
+  vertical-align: 0 !important;  */
+  content: none;
 }
 
 .dropdown-toggle-2::after {
   content: url('./assets/icons/icon-arrow-logo.svg') !important; 
   border: 0 !important; 
-  width: 12px;
-  height: 12px;
-  margin-left: 10px !important;
+  width: 10px;
+  height: 10px;
+  margin-left: 8px !important;
   vertical-align: 0 !important; 
+  /* content: none; */
 }
 
 .dropdown-menu{
@@ -246,7 +264,15 @@ body, html,  .main-container{
   border: solid 1px #15507A !important;
   border-radius: 21px;
   background: transparent !important;
- 
+}
+
+.btn-primary-custom {
+  background-color: #15507A !important;
+  border-radius: 14px;
+}
+
+.btn-atjo {
+  background-color: #15507A !important;
 }
 
 .btn-primary span {
@@ -369,3 +395,8 @@ body, html,  .main-container{
 .dropdown {
   position: unset !important;
 } 
+
+
+.title-section {
+  width: max-content !important;
+}

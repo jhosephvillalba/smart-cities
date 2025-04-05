@@ -1,0 +1,11 @@
+.custom_field {
+    border-radius: 11.4px !important;
+    padding: 0.7rem !important;
+    border: 1px solid #15507A !important;
+    
+}
+
+.custom_field:focus {
+    border: 1px solid #eca83d !important;
+    box-shadow: none !important;
+}

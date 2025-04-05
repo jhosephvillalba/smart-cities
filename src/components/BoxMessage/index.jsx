@@ -375,7 +375,8 @@
 // export default BoxMessage;
 
 import React, { useState, useEffect, useRef } from 'react';
-import SendIcon from '../../assets/icons/send-icon.svg'
+import SendIcon from '../../assets/icons/send-icon.svg'; 
+import styles from './styles.module.css'; 
 
 const barrios = [
   { "id": 1, "barrio": "Belchite" },
@@ -455,7 +456,7 @@ const BoxMessage = ({
         <div className="modal fade show d-block" tabIndex="-1" role="dialog">
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
-              <div className="modal-header text-white" style={{ backgroundColor: primaryColor }}>
+              <div className={`modal-header text-white ${styles.header_color}`}>
                 <h5 className="modal-title">
                   <i className="bi bi-building me-2"></i>
                   {headerTitle}

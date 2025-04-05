@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import { BrowserRouter, Routes, Route, NavLink, Link } from "react-router-dom";
 //icons
 import IconExplore from "./assets/icons/explore-btn-smart.svg";
 import IconLoupe from "./assets/icons/icon-loupe.svg";
 import IconOdinIa from "./assets/icons/btn-logo-smart.svg";
+import IconOdin from "./assets/icons/icon-odinia.svg";
+
 import IconPencilBlack from "./assets/icons/icon-pencil-black.svg";
 
 
@@ -12,7 +14,7 @@ import IconStar from "./assets/icons/start-smart.svg";
 import IconSwitchBlack from "./assets/icons/icon-switch-black.svg";
 
 import LogoWhite from "./assets/icons/logo_rionego.svg";
-import LogoWhite2 from "./assets/icons/alcaldia-rio-negro-logo.svg"
+import LogoWhite2 from "./assets/icons/rio-negro-logo-dark-mode.svg"
 
 import PensilAndNoteBook from "./assets/icons/pencil-and-notepack.svg";
 import PensilAndNoteBook2 from "./assets/icons/tableta-lapiz-negro.svg";
@@ -26,6 +28,8 @@ import Reports from "./views/reports";
 import Notifications from "./views/Notifications";
 import Help from "./views/help";
 import OdinIa from "./views/OdinIa";
+import SingIn from "./views/SingIn";
+import Login from "./views/Login";
 
 import "./App.css";
 
@@ -65,13 +69,15 @@ const App = () => {
             </div>
             <div className="menu__content d-flex flex-column justify-content-between mt-4 pe-3">
               <div className="menu__item d-flex flex-column">
-                <button
+                <a
                   type="button"
+                  href="https://rionegro.gov.co/"
+                  target="_blank"
                   className="btn btn-light d-flex flex-row align-items-center"
                 >
                   <img src={IconOdinIa} alt="" />
                   <span className="ms-2">Alcaldia de Rionegro</span>
-                </button>
+                </a>
                 <button
                   type="button"
                   className="btn btn-light d-flex flex-row align-items-center"
@@ -84,13 +90,19 @@ const App = () => {
                 <NavbarSideBar />
               </div>
               <div className="menu__item d-flex flex-column">
-                <button
+                {/* <button
                   type="button"
                   className="btn btn-light d-flex flex-row align-items-center"
                 >
                   <img src={IconStar} alt="" />
                   <span className="ms-2">Mejora el plan</span>
-                </button>
+                </button> */}
+                <Link to='/login' type="button" class="btn btn-primary btn-primary-custom mb-3">
+                  INICIAR SESIÓN
+                </Link>
+                <Link to='/sign-in' type="button" class="btn btn-primary btn-primary-custom">
+                  REGISTRARSE
+                </Link>
               </div>
             </div>
           </aside>
@@ -125,14 +137,14 @@ const App = () => {
                 <div className="menu__item d-flex flex-column">
                   <button
                     type="button"
-                    className="btn btn-light d-flex flex-row align-items-center"
+                    className="btn btn-light d-flex flex-row align-items-center p-1"
                   >
                     <img src={IconOdinIa} alt="" />
                     <span className="ms-2">Alcaldia de Rionegro</span>
                   </button>
                   <button
                     type="button"
-                    className="btn btn-light d-flex flex-row align-items-center"
+                    className="btn btn-light d-flex flex-row align-items-center p-1 mt-2"
                   >
                     <img src={IconExplore} alt="" />
                     <span className="ms-2">Explorar OdinIA</span>
@@ -142,13 +154,19 @@ const App = () => {
                   <NavbarSideBar />
                 </div>
                 <div className="menu__item d-flex flex-column">
-                  <button
+                  {/* <button
                     type="button"
                     className="btn btn-light d-flex flex-row align-items-center"
                   >
                     <img src={IconStar} alt="" />
                     <span className="ms-2">Mejora el plan</span>
-                  </button>
+                  </button> */}
+                  <Link to='/login' type="button" class="btn btn-primary btn-primary-custom mb-3">
+                    INICIAR SESIÓN
+                  </Link>
+                  <Link to='/sign-in' type="button" class="btn btn-primary btn-primary-custom">
+                    REGISTRARSE
+                  </Link>
                 </div>
               </div>
             </div>
@@ -159,7 +177,7 @@ const App = () => {
               <nav className="container-fluid px-3 dropdown">
                 <a className="nav-link btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
                   {
-                    darkMode == true ? (<img src={PensilAndNoteBook} style={{ width: "33px" }} alt="OdinIa" />) : (<img src={PensilAndNoteBook2} style={{ width: "33px" }} alt="OdinIa" />)
+                    darkMode == true ? (<img src={PensilAndNoteBook} style={{ width: "30px" }} alt="OdinIa" />) : (<img src={PensilAndNoteBook2} style={{ width: "30px" }} alt="OdinIa" />)
                   }
                 </a>
                 <a
@@ -179,11 +197,11 @@ const App = () => {
                       OdinIA Plus
                     </NavLink>
                   </li>
-                  <li>
+                  {/* <li>
                     <a className="dropdown-item text-black" href="#">
                       OdinIA
                     </a>
-                  </li>
+                  </li> */}
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
@@ -193,31 +211,69 @@ const App = () => {
                       href="#"
                       onClick={() => setShowMenu(!showMenu)}
                     >
-                      Chat temporal
+                      Menú
                     </a>
                   </li>
                 </ul>
-                <div className="profile d-flex justify-content-center align-items-center">
-                  <span>JF</span>
+
+                <div className="dropdown">
+                  <div
+                    className="profile d-flex justify-content-center align-items-center dropdown-toggle-custom-account"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    style={{
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '50%',
+                      backgroundColor: '#0d6efd',
+                      color: 'white',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s'
+                    }}
+                  >
+                    { 
+                      login  == true ? ( <span>JF</span>) : (<img src={IconOdin} alt="odinIa"/>)
+                    }
+
+                  </div>
+
+                  <ul className="dropdown-menu dropdown-menu-end" style={{ marginTop: '10px' }}>
+                    <li>
+                      <Link className="dropdown-item" to="/sign-in">
+                        <i className="bi bi-person-plus me-2"></i>Registrarse
+                      </Link>
+                    </li>
+                    <li>
+                      <hr className="dropdown-divider" />
+                    </li>
+                    <li>
+                      <Link className="dropdown-item" to="/login">
+                        <i className="bi bi-box-arrow-in-right me-2"></i>Iniciar Sesión
+                      </Link>
+                    </li>
+                  </ul>
                 </div>
+
               </nav>
             </header>
             <div className={`container-fluid d-flex flex-column wrapper-content align-items-between`}>
               {/* <ViewChat handlerDarkMode={handlerDarkMode} darkStatus={darkMode} /> */}
-              <div className="h-100 w-100">
-                <Routes>
-                  <Route path="/" element={<OdinIa handlerDarkMode={handlerDarkMode} darkStatus={darkMode} />} />
-                  <Route path="/add-user" element={<AddUser />} />
-                  <Route path="/add-user/register" element={<RegisterUser />} />
-                  <Route path="/group-of-leaders" element={<Leaders />} />
-                  <Route path="/reports" element={<Reports />} />
-                  <Route path="/notifications" element={<Notifications />} />
-                  <Route path="/help" element={<Help />} />
-                </Routes>
-              </div>
+              <Routes>
+                <Route path="/" element={<OdinIa handlerDarkMode={handlerDarkMode} darkStatus={darkMode} />} />
+                <Route path="/add-user" element={<AddUser />} />
+                <Route path="/add-user/register" element={<RegisterUser />} />
+                <Route path="/group-of-leaders" element={<Leaders />} />
+                <Route path="/reports" element={<Reports />} />
+                <Route path="/notifications" element={<Notifications />} />
+                <Route path="/help" element={<Help />} />
+                <Route path="/sign-in" element={<SingIn />} />
+                <Route path="/login" element={<Login />} />
+
+
+              </Routes>
               <footer className="global-footer mt-1">
                 <div className="d-flex flex-column justify-content-center">
-                  <p className="text-center" style={{fontSize:"12px"}}>Al enviar un mensaje a OdinIA, aceptas nuestros <a href="#">Términos</a> y reconoces que leíste nuestra <a href="#">Política de privacidad.</a></p>
+                  <p className="text-center" style={{ fontSize: "12px" }}>Al enviar un mensaje a OdinIA, aceptas nuestros <a href="#">Términos</a> y reconoces que leíste nuestra <a href="#">Política de privacidad.</a></p>
                 </div>
               </footer>
             </div>
