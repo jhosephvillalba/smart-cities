@@ -73,11 +73,11 @@ const OdinIa = ({ handlerDarkMode, darkStatus }) => {
                                 <div
                                     key={index}
                                     ref={isLastMessage ? lastMessageRef : null}
-                                    className={`p-3 rounded-3 ${isUser 
+                                    className={`p-2 rounded-3 ${isUser 
                                         ? "bg-primary text-white align-self-end" 
                                         : "bg-light align-self-start"}`}
                                     style={{ 
-                                        maxWidth: "80%",
+                                        maxWidth: "75%",
                                         transition: "transform 0.3s ease",
                                         transform: isLastMessage ? "scale(1)" : "scale(0.98)"
                                     }}

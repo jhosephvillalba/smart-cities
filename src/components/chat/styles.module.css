@@ -22,7 +22,7 @@
 .container_chat_buttons {
     border-radius:21px;
     background: var(--gradiente);
-    padding: 0.8rem 1rem;
+    padding: 0.7rem;
 }
 
 .font_family {

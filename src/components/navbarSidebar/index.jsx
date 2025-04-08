@@ -44,7 +44,7 @@ const NavbarSideBar = () => {
     <>
       <ul className="nav flex-column">
         {routes.map(({ id, name, uri }) => (
-          <li className="nav-item fw-bolder" key={id}>
+          <li className="nav-item" key={id}>
             <NavLink className="nav-link text-black" to={uri}>
               {name}
             </NavLink>

@@ -9,3 +9,7 @@
     border: 1px solid #eca83d !important;
     box-shadow: none !important;
 }
+
+.inverte {
+    filter: invert(1);
+}

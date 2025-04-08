@@ -4,7 +4,7 @@ import BlackIcon from "../../assets/icons/back.svg";
 import styles from "./styles.module.css";
 import SmartCities from "../../assets/icons/smart-cities.svg"
 
-const SignIn = () => {
+const SignIn = ({ darkMode }) => {
   const [formData, setFormData] = useState({
     initialData: {
       nombre: '',
@@ -67,8 +67,8 @@ const SignIn = () => {
         <div className="col-md-6">
           {!submittedInitial ? (
             <div className='mt-1 d-flex flex-column'>
-              <div className="w-100 d-flex justify-content-between align-items-center mb-5">
-                <div className="w-100">
+              <div className="d-flex justify-content-between align-items-center mb-5">
+                <div className={`w-100 ${darkMode === true ? styles.inverte : ""}`}>
                   <Link to="/" className="btn m-0">
                     <img src={BlackIcon} width={23} alt="back" />
                   </Link>

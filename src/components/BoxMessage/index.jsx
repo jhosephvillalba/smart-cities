@@ -477,9 +477,10 @@ const BoxMessage = ({
                   <div className="mb-3">
                     <label className="form-label">Sexo</label>
                     <select className="form-control" value={formData.sexo} onChange={(e) => setFormData({ ...formData, sexo: e.target.value })}>
-                      <option value="">Prefiero no decirlo</option>
-                      <option value="Masculino">Masculino</option>
+                      <option value="">Selecciona</option>
                       <option value="Femenino">Femenino</option>
+                      <option value="Masculino">Masculino</option>
+                      <option value="">Otro</option>
                     </select>
                   </div>
                   <div className="mb-3">

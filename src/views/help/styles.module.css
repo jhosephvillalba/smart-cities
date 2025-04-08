@@ -24,3 +24,8 @@
 /* .container_data {
     width: 80%;
 } */
+
+
+.inverte {
+    filter: invert(1);
+}

@@ -4,9 +4,9 @@
   --color-background-content: #F2F2F2;
   --color-black: #000;
   --color-grey-light: #B6B6B6;
-  --color-white: #fff; 
+  --color-white: #fff;
   --border-color: #E7E7E7;
-  --color-titles: #444444;  
+  --color-titles: #444444;
   --gradiente: linear-gradient(90deg, #FDE487 30.47%, #EAA34A 100%);
 
 }
@@ -88,6 +88,7 @@ body, html,  .main-container{
   filter: invert();
 }
 
+
 .main-container .background-content .text_section a img:not([src^="https://eso.gov.co/"]) {
   filter: none;
 }
@@ -97,7 +98,7 @@ body, html,  .main-container{
 }
 
 .main-container .background-content .h2{
-  color: var(--color-black) !important 
+  color: var(--color-black) !important
 }
 
 
@@ -177,19 +178,19 @@ body, html,  .main-container{
 }
 
 .dropdown-toggle::after {
-  content: url('./assets/icons/flecha-negra.svg') !important; 
+  content: url('./assets/icons/flecha-negra.svg') !important;
 
-  border: 0 !important; 
+  border: 0 !important;
   width: 10px;
   height: 10px;
   margin-left: 8px !important;
-  vertical-align: 0 !important; 
+  vertical-align: 0 !important;
 }
 
 .dropdown-toggle-custom-account::after {
-  /* content: url('./assets/icons/flecha-negra.svg') !important; 
+  /* content: url('./assets/icons/flecha-negra.svg') !important;
 
-  border: 0 !important; 
+  border: 0 !important;
   width: 10px;
   height: 10px;
   margin-left: 8px !important;
@@ -198,12 +199,12 @@ body, html,  .main-container{
 }
 
 .dropdown-toggle-2::after {
-  content: url('./assets/icons/icon-arrow-logo.svg') !important; 
-  border: 0 !important; 
+  content: url('./assets/icons/icon-arrow-logo.svg') !important;
+  border: 0 !important;
   width: 10px;
   height: 10px;
   margin-left: 8px !important;
-  vertical-align: 0 !important; 
+  vertical-align: 0 !important;
   /* content: none; */
 }
 
@@ -216,12 +217,12 @@ body, html,  .main-container{
 }
 
 .custom-dropdown-toggle::after {
-  content: ""; 
-  border: 0 !important; 
+  content: "";
+  border: 0 !important;
   /* width: 12px;
   height: 12px; */
   /* margin-left: 10px !important; */
-  vertical-align: 0 !important; 
+  vertical-align: 0 !important;
 }
 
 .menu__content{
@@ -360,32 +361,32 @@ body, html,  .main-container{
 
 .markdown-container {
   font-family: Arial, sans-serif;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
-.markdown-container h1, 
-.markdown-container h2, 
+.markdown-container h1,
+.markdown-container h2,
 .markdown-container h3,
 .markdown-container p {
-  color: #333 !important; 
-  margin-top: 1em;
+  color: #333 !important;
+  margin: 0.5rem 0.5rem 0.5rem 1rem;
 }
 
-.markdown-container ul, 
+.markdown-container ul,
 .markdown-container ol {
   padding-left: 1.5em;
 }
 
 .markdown-container code {
   background: #f4f4f4;
-  padding: 0.2em 0.4em;
+  padding: 0.5rem;
   border-radius: 3px;
   font-family: monospace;
 }
 
 .markdown-container pre {
   background: #f8f8f8;
-  padding: 1em;
+  padding: 0.5rem;
   border-radius: 5px;
   overflow-x: auto;
 }
@@ -398,7 +399,19 @@ body, html,  .main-container{
   position: unset !important;
 } 
 
-
 .title-section {
   width: max-content !important;
 }
+
+
+/* .offcanvas {
+  transition: transform 0.4s ease-in-out; /* Cambia duración y efecto 
+} */
+
+.offcanvas-backdrop {
+  opacity: 0 !important;
+}
+
+/* body.offcanvas-backdrop {
+  transition: background-color 0.4s ease-in-out;
+} */
