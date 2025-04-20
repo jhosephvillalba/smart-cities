@@ -285,7 +285,7 @@ const SignIn = ({ darkMode, setLoggin}) => {
                         className={`form-control ${styles.custom_field}`}
                         value={formData.secondaryData.contraseña}
                         onChange={handleChange('secondaryData', 'contraseña')}
-                        placeholder="Nueva contraseña"
+                        placeholder="Contraseña"
                         required
                         minLength="6"
                       />

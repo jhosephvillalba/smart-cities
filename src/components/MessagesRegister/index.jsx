@@ -41,7 +41,7 @@ function MensajeRegistroExitoso({ name }) {
                         <>
                             <p className="text-center">Da click en el botón "Comencemos", para iniciar.</p>
                             <div className="d-flex justify-content-center w-100 my-4">
-                                <a href="#" className={`btn ${styles.button} ${styles.button_card}`} onClick={handleStart}>¡Comencemos!</a>
+                                <button className={`btn ${styles.button} ${styles.button_card}`} onClick={handleStart}>¡Comencemos!</button>
                             </div>
                         </>
                     )}
