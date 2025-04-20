@@ -1,3 +1,7 @@
 .header_color {
     background: linear-gradient(90deg, #FDE487 30.47%, #EAA34A 100%) !important;
 }
+
+.modal_content{
+    height: calc(100vh - 3rem) !important;
+}
