@@ -1,7 +1,24 @@
+
 // import React, { useState, useEffect, useRef } from 'react';
+// import SendIcon from '../../assets/icons/send-icon.svg'; 
+// import styles from './styles.module.css'; 
+// import MayorMessageService from '../../services/MayorMessageService';
+
+// const barrios = [
+//   { id: 1, barrio: "Belchite" }, { id: 2, barrio: "Centro" }, { id: 3, barrio: "Alto del Medio" },
+//   { id: 4, barrio: "Hospital" }, { id: 5, barrio: "Fontibón" }, { id: 6, barrio: "El Faro" },
+//   { id: 7, barrio: "San Antonio" }, { id: 8, barrio: "Gualanday" }, { id: 9, barrio: "La María" },
+//   { id: 10, barrio: "Cuatro Esquinas" }
+// ];
+
+// const categorias = [
+//   { id: 1, categoria: "Seguridad y Convivencia Ciudadana" }, { id: 2, categoria: "Movilidad y Transporte" },
+//   { id: 3, categoria: "Infraestructura y Obras Públicas" }, { id: 4, categoria: "Salud y Bienestar" },
+//   { id: 5, categoria: "Educación y Cultura" }, { id: 6, categoria: "Servicios Públicos y Saneamiento" }
+// ];
 
 // const BoxMessage = ({
-//   show: externalShow,
+//   show,
 //   onClose,
 //   onMessageSent,
 //   buttonText = "",
@@ -13,13 +30,12 @@
 //   primaryColor = "#0d6efd",
 //   buttonPosition = "bottom-right"
 // }) => {
-//   const [internalShow, setInternalShow] = useState(false);
+//   const [formData, setFormData] = useState({ barrio: '', sexo: '', edad: '', categoria: '', mensaje: '' });
 //   const [messages, setMessages] = useState([]);
-//   const [messageInput, setMessageInput] = useState('');
+//   const [errors, setErrors] = useState({});
+//   const [isSubmitting, setIsSubmitting] = useState(false);
+//   const [step, setStep] = useState('form'); // 'form', 'chat', 'success'
 //   const messagesEndRef = useRef(null);
-//   const isControlled = externalShow !== undefined;
-
-//   const show = isControlled ? externalShow : internalShow;
 
 //   const positions = {
 //     'bottom-right': 'bottom-0 end-0',
@@ -28,342 +44,174 @@
 //     'top-left': 'top-0 start-0'
 //   };
 
-//   const scrollToBottom = () => {
-//     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-//   };
-
 //   useEffect(() => {
-//     scrollToBottom();
+//     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
 //   }, [messages]);
 
-//   const handleSendMessage = (e) => {
+//   const validateForm = () => {
+//     const newErrors = {};
+//     if (!formData.barrio) newErrors.barrio = 'Por favor selecciona tu barrio';
+//     if (!formData.categoria) newErrors.categoria = 'Por favor selecciona una categoría';
+//     if (formData.edad && (isNaN(formData.edad) || formData.edad < 0 || formData.edad > 120)) {
+//       newErrors.edad = 'Por favor ingresa una edad válida (0-120)';
+//     }
+//     setErrors(newErrors);
+//     return Object.keys(newErrors).length === 0;
+//   };
+
+//   const handleSendMessage = async (e) => {
 //     e.preventDefault();
-//     if (!messageInput.trim()) return;
 
-//     const userMessage = {
-//       text: messageInput,
-//       isUser: true,
-//       timestamp: new Date().toLocaleTimeString()
-//     };
-
-//     setMessages(prev => [...prev, userMessage]);
-//     setMessageInput('');
-
-//     if (onMessageSent) {
-//       onMessageSent(messageInput);
+//     if (step === 'form') {
+//       if (validateForm()) {
+//         setStep('chat');
+//       }
+//       return;
 //     }
 
-//     setTimeout(() => {
-//       const botResponse = {
-//         text: autoResponse,
+//     if (!formData.mensaje.trim()) {
+//       setErrors(prev => ({ ...prev, mensaje: 'Por favor escribe un mensaje' }));
+//       return;
+//     }
+
+//     setIsSubmitting(true);
+
+//     try {
+//       const userMessage = { text: formData.mensaje, isUser: true, timestamp: new Date().toLocaleTimeString() };
+//       setMessages(prev => [...prev, userMessage]);
+
+//       await MayorMessageService.sendMessage({
+//         barrio: formData.barrio,
+//         sexo: formData.sexo,
+//         edad: formData.edad,
+//         categoria: formData.categoria,
+//         mensaje: formData.mensaje
+//       });
+
+//       if (onMessageSent) onMessageSent(formData);
+
+//       setTimeout(() => {
+//         const botResponse = { text: autoResponse, isUser: false, timestamp: new Date().toLocaleTimeString() };
+//         setMessages(prev => [...prev, botResponse]);
+//         setFormData(prev => ({ ...prev, mensaje: '' }));
+//         setStep('success');
+//         setIsSubmitting(false);
+//       }, 1000);
+
+//     } catch (error) {
+//       console.error('Error al enviar mensaje:', error);
+//       const errorMessage = {
+//         text: "Lo sentimos, ha ocurrido un error al enviar tu mensaje. Por favor intenta de nuevo.",
 //         isUser: false,
-//         timestamp: new Date().toLocaleTimeString()
+//         timestamp: new Date().toLocaleTimeString(),
+//         isError: true
 //       };
-//       setMessages(prev => [...prev, botResponse]);
-//     }, 1000);
-//   };
-
-//   const handleToggleChat = () => {
-//     if (isControlled) {
-//       onClose(!show);
-//     } else {
-//       setInternalShow(!show);
+//       setMessages(prev => [...prev, errorMessage]);
+//       setIsSubmitting(false);
 //     }
 //   };
 
-//   const handleClose = () => {
-//     if (isControlled) {
-//       onClose(false);
-//     } else {
-//       setInternalShow(false);
+//   const handleChange = (field) => (e) => {
+//     setFormData(prev => ({
+//       ...prev,
+//       [field]: e.target.value
+//     }));
+//     if (errors[field]) {
+//       setErrors(prev => {
+//         const newErrors = { ...prev };
+//         delete newErrors[field];
+//         return newErrors;
+//       });
 //     }
 //   };
 
 //   return (
 //     <div className={`position-fixed ${positions[buttonPosition]} mb-5 me-3`}>
-//       <button 
-//         className={`btn btn-${buttonColor} rounded-pill shadow-lg`}
-//         onClick={handleToggleChat}
-//         style={{ transition: 'all 0.3s ease' }}
-//       >
-//         <i className={`bi ${buttonIcon} me-2`}></i>
-//         {buttonText}
-//       </button>
-
 //       {show && (
 //         <div className="modal fade show d-block" tabIndex="-1" role="dialog">
 //           <div className="modal-dialog modal-dialog-centered">
 //             <div className="modal-content">
-//               <div 
-//                 className="modal-header text-white"
-//                 style={{ backgroundColor: primaryColor }}
-//               >
+//               <div className={`modal-header text-white ${styles.header_color}`}>
 //                 <h5 className="modal-title">
-//                   <i className="bi bi-building me-2"></i>
-//                   {headerTitle}
+//                   <i className="bi bi-building me-2"></i> {headerTitle}
 //                 </h5>
-//                 <button 
-//                   type="button" 
-//                   className="btn-close btn-close-white"
-//                   onClick={handleClose}
-//                   aria-label="Cerrar"
-//                 ></button>
+//                 <button type="button" className="btn-close btn-close-white" onClick={onClose}></button>
 //               </div>
-              
-//               <div className="modal-body" style={{ height: '400px' }}>
-//                 <div className="chat-container overflow-auto h-100">
-//                   {messages.map((msg, index) => (
-//                     <div 
-//                       key={index}
-//                       className={`d-flex ${msg.isUser ? 'justify-content-end' : 'justify-content-start'} mb-3`}
-//                     >
-//                       <div 
-//                         className={`p-3 rounded-4 ${msg.isUser 
-//                           ? 'text-white' 
-//                           : 'bg-light'}`}
-//                         style={{
-//                           maxWidth: '80%',
-//                           backgroundColor: msg.isUser ? primaryColor : undefined
-//                         }}
-//                       >
-//                         <div className="message-text">{msg.text}</div>
-//                         <div className={`text-small ${msg.isUser ? 'text-white-50' : 'text-muted'} mt-1`}>
-//                           {msg.timestamp}
+
+//               <div className="modal-body" style={{ height: '400px', overflowY: 'auto' }}>
+//                 {step === 'form' && (
+//                   <form>
+//                     <div className="mb-3">
+//                       <label className="form-label">Barrio</label>
+//                       <select className="form-control" value={formData.barrio} onChange={handleChange('barrio')}>
+//                         <option value="">Selecciona tu barrio</option>
+//                         {barrios.map(({ id, barrio }) => (
+//                           <option key={id} value={barrio}>{barrio}</option>
+//                         ))}
+//                       </select>
+//                       {errors.barrio && <div className="text-danger">{errors.barrio}</div>}
+//                     </div>
+//                     <div className="mb-3">
+//                       <label className="form-label">Sexo</label>
+//                       <select className="form-control" value={formData.sexo} onChange={handleChange('sexo')}>
+//                         <option value="">Selecciona</option>
+//                         <option value="Femenino">Femenino</option>
+//                         <option value="Masculino">Masculino</option>
+//                         <option value="Otro">Otro</option>
+//                       </select>
+//                     </div>
+//                     <div className="mb-3">
+//                       <label className="form-label">Edad</label>
+//                       <input type="number" className="form-control" value={formData.edad} onChange={handleChange('edad')} />
+//                       {errors.edad && <div className="text-danger">{errors.edad}</div>}
+//                     </div>
+//                     <div className="mb-3">
+//                       <label className="form-label">Categoría</label>
+//                       <select className="form-control" value={formData.categoria} onChange={handleChange('categoria')}>
+//                         <option value="">Selecciona una categoría</option>
+//                         {categorias.map(({ id, categoria }) => (
+//                           <option key={id} value={categoria}>{categoria}</option>
+//                         ))}
+//                       </select>
+//                       {errors.categoria && <div className="text-danger">{errors.categoria}</div>}
+//                     </div>
+//                   </form>
+//                 )}
+
+//                 {step === 'chat' && (
+//                   <div className="chat-container">
+//                     {messages.map((msg, index) => (
+//                       <div key={index} className={`d-flex ${msg.isUser ? 'justify-content-end' : 'justify-content-start'} mb-3`}>
+//                         <div className={`p-3 rounded-4 ${msg.isUser ? 'text-white' : 'bg-light'}`} style={{ maxWidth: '80%', backgroundColor: msg.isUser ? primaryColor : undefined }}>
+//                           <div>{msg.text}</div>
 //                         </div>
 //                       </div>
-//                     </div>
-//                   ))}
-//                   <div ref={messagesEndRef} />
-//                 </div>
+//                     ))}
+//                     <div ref={messagesEndRef} />
+//                   </div>
+//                 )}
 //               </div>
 
 //               <div className="modal-footer">
 //                 <form onSubmit={handleSendMessage} className="w-100">
-//                   <div className="input-group">
-//                     <input
-//                       type="text"
-//                       className="form-control"
-//                       placeholder={inputPlaceholder}
-//                       value={messageInput}
-//                       onChange={(e) => setMessageInput(e.target.value)}
-//                       aria-label="Mensaje para el alcalde"
-//                     />
-//                     <button 
-//                       type="submit" 
-//                       className="btn"
-//                       style={{ backgroundColor: primaryColor, color: 'white' }}
-//                       disabled={!messageInput.trim()}
-//                     >
-//                       <i className="bi bi-send"></i>
-//                     </button>
-//                   </div>
+//                   {step !== 'form' && (
+//                     <div className="input-group">
+//                       <textarea
+//                         className="form-control"
+//                         placeholder={inputPlaceholder}
+//                         value={formData.mensaje}
+//                         onChange={handleChange('mensaje')}
+//                         disabled={isSubmitting}
+//                       />
+//                       <button type="submit" className="btn btn-primary d-flex align-items-center" disabled={isSubmitting}>
+//                         <span className="me-2 text-black">Enviar</span>
+//                         <img src={SendIcon} alt="send" width={20} />
+//                       </button>
+//                     </div>
+//                   )}
+//                   {errors.mensaje && <div className="text-danger mt-1">{errors.mensaje}</div>}
 //                 </form>
 //               </div>
-//             </div>
-//           </div>
-//         </div>
-//       )}
-      
-//       {show && <div className="modal-backdrop fade show"></div>}
-//     </div>
-//   );
-// };
-
-
-// export default BoxMessage;
-
-// const barrios = [
-//   { "id": 1, "barrio": "Belchite" },
-//   { "id": 2, "barrio": "Centro" },
-//   { "id": 3, "barrio": "Alto del Medio" },
-//   { "id": 4, "barrio": "Hospital" },
-//   { "id": 5, "barrio": "Fontibón" },
-//   { "id": 6, "barrio": "El Faro" },
-//   { "id": 7, "barrio": "San Antonio" },
-//   { "id": 8, "barrio": "Gualanday" },
-//   { "id": 9, "barrio": "La María" },
-//   { "id": 10, "barrio": "Cuatro Esquinas" },
-//   { "id": 11, "barrio": "Santa Ana" },
-//   { "id": 12, "barrio": "San Joaquín" },
-//   { "id": 13, "barrio": "El Porvenir" },
-//   { "id": 14, "barrio": "Barro Blanco" },
-//   { "id": 15, "barrio": "El Carretero" }
-// ]
-
-// const categorias = [
-//   { "id": 1, "categoria": "Seguridad y Convivencia Ciudadana" },
-//   { "id": 2, "categoria": "Movilidad y Transporte" },
-//   { "id": 3, "categoria": "Infraestructura y Obras Públicas" },
-//   { "id": 4, "categoria": "Salud y Bienestar" },
-//   { "id": 5, "categoria": "Educación y Cultura" },
-//   { "id": 6, "categoria": "Servicios Públicos y Saneamiento" },
-//   { "id": 7, "categoria": "Medio Ambiente y Espacios Públicos" },
-//   { "id": 8, "categoria": "Transparencia y Corrupción" },
-//   { "id": 9, "categoria": "Atención a la Comunidad y Participación Ciudadana" },
-//   { "id": 10, "categoria": "Emergencias y Desastres Naturales" }
-// ]
-
-
-
-
-// import React, { useState, useEffect, useRef } from 'react';
-
-// const BoxMessage = ({
-//   show: externalShow,
-//   onClose,
-//   onMessageSent,
-//   buttonText = "Abrir Chat",
-//   buttonColor = "primary",
-//   buttonIcon = "bi-chat-dots",
-//   headerTitle = "Alcaldía de Rionegro",
-//   autoResponse = "Tu mensaje ha sido enviado al Alcalde de Rionegro. ¡Gracias por tu comunicación!",
-//   inputPlaceholder = "Escribe tu mensaje...",
-//   primaryColor = "#0d6efd",
-//   buttonPosition = "bottom-right"
-// }) => {
-//   const [internalShow, setInternalShow] = useState(false);
-//   const [showForm, setShowForm] = useState(true);
-//   const [formData, setFormData] = useState({ barrio: '', sexo: '', edad: '', categoria: '' });
-//   const [messages, setMessages] = useState([]);
-//   const [messageInput, setMessageInput] = useState('');
-//   const messagesEndRef = useRef(null);
-//   const isControlled = externalShow !== undefined;
-//   const show = isControlled ? externalShow : internalShow;
-
-//   const positions = {
-//     'bottom-right': 'bottom-0 end-0',
-//     'bottom-left': 'bottom-0 start-0',
-//     'top-right': 'top-0 end-0',
-//     'top-left': 'top-0 start-0'
-//   };
-
-//   useEffect(() => {
-//     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-//   }, [messages]);
-
-//   const handleSendMessage = (e) => {
-//     e.preventDefault();
-//     if (!messageInput.trim()) return;
-
-//     const userMessage = { text: messageInput, isUser: true, timestamp: new Date().toLocaleTimeString() };
-//     setMessages(prev => [...prev, userMessage]);
-//     setMessageInput('');
-
-//     if (onMessageSent) onMessageSent(messageInput);
-
-//     setTimeout(() => {
-//       const botResponse = { text: autoResponse, isUser: false, timestamp: new Date().toLocaleTimeString() };
-//       setMessages(prev => [...prev, botResponse]);
-//     }, 1000);
-//   };
-
-//   const handleToggleChat = () => {
-//     if (isControlled) {
-//       onClose(!show);
-//     } else {
-//       setInternalShow(!show);
-//     }
-//   };
-
-//   const handleClose = () => {
-//     if (isControlled) {
-//       onClose(false);
-//     } else {
-//       setInternalShow(false);
-//     }
-//   };
-
-//   const handleFormSubmit = (e) => {
-//     e.preventDefault();
-//     if (!formData.barrio || !formData.edad || !formData.categoria) {
-//       alert("Por favor completa los campos obligatorios.");
-//       return;
-//     }
-//     setShowForm(false);
-//   };
-
-//   return (
-//     <div className={`position-fixed ${positions[buttonPosition]} mb-5 me-3`}>
-//       <button className={`btn btn-${buttonColor} rounded-pill shadow-lg`} onClick={handleToggleChat}>
-//         <i className={`bi ${buttonIcon} me-2`}></i>
-//         {buttonText}
-//       </button>
-
-//       {show && (
-//         <div className="modal fade show d-block" tabIndex="-1" role="dialog">
-//           <div className="modal-dialog modal-dialog-centered">
-//             <div className="modal-content">
-//               <div className="modal-header text-white" style={{ backgroundColor: primaryColor }}>
-//                 <h5 className="modal-title">
-//                   <i className="bi bi-building me-2"></i>
-//                   {headerTitle}
-//                 </h5>
-//                 <button type="button" className="btn-close btn-close-white" onClick={handleClose} aria-label="Cerrar"></button>
-//               </div>
-
-//               {showForm ? (
-//                 <div className="modal-body">
-//                   <form onSubmit={handleFormSubmit}>
-//                     <div className="mb-3">
-//                       <label className="form-label">Barrio *</label>
-//                       <select className="form-control" value={formData.barrio} onChange={(e) => setFormData({ ...formData, barrio: e.target.value })}>
-//                         <option value="">Selecciona tu barrio</option>
-//                         {
-//                           barrios.map(({id, barrio})=> (<option key={id} value={barrio}>{barrio}</option>))
-//                         }
-//                       </select>
-//                     </div>
-//                     <div className="mb-3">
-//                       <label className="form-label">Sexo</label>
-//                       <select className="form-control" value={formData.sexo} onChange={(e) => setFormData({ ...formData, sexo: e.target.value })}>
-//                         <option value="">Prefiero no decirlo</option>
-//                         <option value="Masculino">Masculino</option>
-//                         <option value="Femenino">Femenino</option>
-//                       </select>
-//                     </div>
-//                     <div className="mb-3">
-//                       <label className="form-label">Edad *</label>
-//                       <input type="number" className="form-control" value={formData.edad} onChange={(e) => setFormData({ ...formData, edad: e.target.value })} />
-//                     </div>
-//                     <div className="mb-3">
-//                       <label className="form-label">Categoría *</label>
-//                       <select className="form-control" value={formData.categoria} onChange={(e) => setFormData({ ...formData, categoria: e.target.value })}>
-//                         <option value="">Selecciona una categoría</option>
-//                         {
-//                           categorias.map(({id, categoria})=> (<option key={id} value={categoria}>{categoria}</option>))
-//                         }
-//                       </select>
-//                     </div>
-//                     <button type="submit" className="btn btn-success w-100">Continuar al Chat</button>
-//                   </form>
-//                 </div>
-//               ) : (
-//                 <>
-//                   <div className="modal-body" style={{ height: '400px' }}>
-//                     <div className="chat-container overflow-auto h-100">
-//                       {messages.map((msg, index) => (
-//                         <div key={index} className={`d-flex ${msg.isUser ? 'justify-content-end' : 'justify-content-start'} mb-3`}>
-//                           <div className={`p-3 rounded-4 ${msg.isUser ? 'text-white' : 'bg-light'}`} style={{ maxWidth: '80%', backgroundColor: msg.isUser ? primaryColor : undefined }}>
-//                             <div className="message-text">{msg.text}</div>
-//                             <div className={`text-small ${msg.isUser ? 'text-white-50' : 'text-muted'} mt-1`}>{msg.timestamp}</div>
-//                           </div>
-//                         </div>
-//                       ))}
-//                       <div ref={messagesEndRef} />
-//                     </div>
-//                   </div>
-//                   <div className="modal-footer">
-//                     <form onSubmit={handleSendMessage} className="w-100">
-//                       <div className="input-group">
-//                         <input type="text" className="form-control" placeholder={inputPlaceholder} value={messageInput} onChange={(e) => setMessageInput(e.target.value)} />
-//                         <button type="submit" className="btn" style={{ backgroundColor: primaryColor, color: 'white' }} disabled={!messageInput.trim()}>
-//                           <i className="bi bi-send"></i>
-//                         </button>
-//                       </div>
-//                     </form>
-//                   </div>
-//                 </>
-//               )}
 //             </div>
 //           </div>
 //         </div>
@@ -377,6 +225,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SendIcon from '../../assets/icons/send-icon.svg'; 
 import styles from './styles.module.css'; 
+import MayorMessageService from '../../services/MayorMessageService';
+import SmartCities from "../../assets/icons/smart-cities.svg";
 
 const barrios = [
   { "id": 1, "barrio": "Belchite" },
@@ -413,9 +263,17 @@ const BoxMessage = ({
   primaryColor = "#0d6efd",
   buttonPosition = "bottom-right"
 }) => {
-  const [formData, setFormData] = useState({ barrio: '', sexo: '', edad: '', categoria: '' });
+  const [formData, setFormData] = useState({ 
+    barrio: '', 
+    sexo: '', 
+    edad: '', 
+    categoria: '', 
+    mensaje: '' 
+  });
   const [messages, setMessages] = useState([]);
-  const [messageInput, setMessageInput] = useState('');
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [step, setStep] = useState('form'); // 'form', 'chat', 'success'
   const messagesEndRef = useRef(null);
 
   const positions = {
@@ -428,21 +286,110 @@ const BoxMessage = ({
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+  
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formData.barrio) newErrors.barrio = 'Por favor selecciona tu barrio';
+    if (!formData.categoria) newErrors.categoria = 'Por favor selecciona una categoría';
+    if (formData.edad && (isNaN(formData.edad) || formData.edad < 0 || formData.edad > 120)) {
+      newErrors.edad = 'Por favor ingresa una edad válida (0-120)';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
-  const handleSendMessage = (e) => {
+  const handleSendMessage = async (e) => {
     e.preventDefault();
-    if (!messageInput.trim()) return;
+    
+    // Si estamos en el paso del formulario, validamos y pasamos al chat
+    if (step === 'form') {
+      if (validateForm()) {
+        setStep('chat');
+        return;
+      } else {
+        return;
+      }
+    }
+    
+    // Si estamos en el paso del chat
+    if (!formData.mensaje || !formData.mensaje.trim()) {
+      setErrors(prev => ({ ...prev, mensaje: 'Por favor escribe un mensaje' }));
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    try {
+      // Añadir el mensaje a la conversación
+      const userMessage = { 
+        text: formData.mensaje, 
+        isUser: true, 
+        timestamp: new Date().toLocaleTimeString() 
+      };
+      setMessages(prev => [...prev, userMessage]);
+      
+      // Enviar al backend
+      await MayorMessageService.sendMessage({
+        barrio: formData.barrio,
+        sexo: formData.sexo,
+        edad: formData.edad,
+        categoria: formData.categoria,
+        mensaje: formData.mensaje
+      });
+      
+      if (onMessageSent) onMessageSent(formData);
+      
+      // Mostrar respuesta automática
+      setTimeout(() => {
+        const botResponse = { 
+          text: autoResponse, 
+          isUser: false, 
+          timestamp: new Date().toLocaleTimeString() 
+        };
+        setMessages(prev => [...prev, botResponse]);
+        setFormData(prev => ({ ...prev, mensaje: '' }));
+        setStep('success');
+        setIsSubmitting(false);
+      }, 1000);
+      
+    } catch (error) {
+      console.error('Error al enviar mensaje:', error);
+      
+      // Mostrar error
+      const errorMessage = { 
+        text: "Lo sentimos, ha ocurrido un error al enviar tu mensaje. Por favor intenta de nuevo.", 
+        isUser: false, 
+        timestamp: new Date().toLocaleTimeString(),
+        isError: true
+      };
+      setMessages(prev => [...prev, errorMessage]);
+      setIsSubmitting(false);
+    }
+  };
 
-    const userMessage = { text: messageInput, isUser: true, timestamp: new Date().toLocaleTimeString() };
-    setMessages(prev => [...prev, userMessage]);
-    setMessageInput('');
-
-    if (onMessageSent) onMessageSent(messageInput);
-
-    setTimeout(() => {
-      const botResponse = { text: autoResponse, isUser: false, timestamp: new Date().toLocaleTimeString() };
-      setMessages(prev => [...prev, botResponse]);
-    }, 1000);
+  const handleChange = (field) => (e) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: e.target.value
+    }));
+    
+    // Limpiar error cuando el usuario comienza a escribir
+    if (errors[field]) {
+      setErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[field];
+        return newErrors;
+      });
+    }
+  };
+  
+  const resetForm = () => {
+    setFormData({ barrio: '', sexo: '', edad: '', categoria: '', mensaje: '' });
+    setMessages([]);
+    setErrors({});
+    setStep('form');
   };
 
   return (
@@ -465,65 +412,151 @@ const BoxMessage = ({
               </div>
               
               <div className="modal-body" style={{ height: '400px', overflowY: 'auto' }}>
-                {/* Formulario */}
-                <form>
-                  <div className="mb-3">
-                    <label className="form-label">Barrio</label>
-                    <select className="form-control" value={formData.barrio} onChange={(e) => setFormData({ ...formData, barrio: e.target.value })}>
-                      <option value="">Selecciona tu barrio</option>
-                      {barrios.map(({ id, barrio }) => (<option key={id} value={barrio}>{barrio}</option>))}
-                    </select>
-                  </div>
-                  <div className="mb-3">
-                    <label className="form-label">Sexo</label>
-                    <select className="form-control" value={formData.sexo} onChange={(e) => setFormData({ ...formData, sexo: e.target.value })}>
-                      <option value="">Selecciona</option>
-                      <option value="Femenino">Femenino</option>
-                      <option value="Masculino">Masculino</option>
-                      <option value="">Otro</option>
-                    </select>
-                  </div>
-                  <div className="mb-3">
-                    <label className="form-label">Edad</label>
-                    <input type="number" className="form-control" value={formData.edad} onChange={(e) => setFormData({ ...formData, edad: e.target.value })} />
-                  </div>
-                  <div className="mb-3">
-                    <label className="form-label">Categoría</label>
-                    <select className="form-control" value={formData.categoria} onChange={(e) => setFormData({ ...formData, categoria: e.target.value })}>
-                      <option value="">Selecciona una categoría</option>
-                      {categorias.map(({ id, categoria }) => (<option key={id} value={categoria}>{categoria}</option>))}
-                    </select>
-                  </div>
-                </form>
-                
-                {/* Chat */}
-                <div className="chat-container mt-3">
-                  {messages.map((msg, index) => (
-                    <div key={index} className={`d-flex ${msg.isUser ? 'justify-content-end' : 'justify-content-start'} mb-3`}>
-                      <div className={`p-3 rounded-4 ${msg.isUser ? 'text-white' : 'bg-light'}`} style={{ maxWidth: '80%', backgroundColor: msg.isUser ? primaryColor : undefined }}>
-                        <div className="message-text">{msg.text}</div>
-                      </div>
+                {/* Formulario - Paso 1 */}
+                {step === 'form' && (
+                  <form>
+                    <div className="mb-3">
+                      <label className="form-label">Barrio</label>
+                      <select 
+                        className={`form-control ${errors.barrio ? 'is-invalid' : ''}`}
+                        value={formData.barrio} 
+                        onChange={handleChange('barrio')}
+                      >
+                        <option value="">Selecciona tu barrio</option>
+                        {barrios.map(({ id, barrio }) => (
+                          <option key={id} value={barrio}>{barrio}</option>
+                        ))}
+                      </select>
+                      {errors.barrio && <div className="invalid-feedback">{errors.barrio}</div>}
                     </div>
-                  ))}
-                  <div ref={messagesEndRef} />
-                </div>
+                    
+                    <div className="mb-3">
+                      <label className="form-label">Sexo</label>
+                      <select 
+                        className="form-control" 
+                        value={formData.sexo} 
+                        onChange={handleChange('sexo')}
+                      >
+                        <option value="">Selecciona</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Otro">Otro</option>
+                      </select>
+                    </div>
+                    
+                    <div className="mb-3">
+                      <label className="form-label">Edad</label>
+                      <input 
+                        type="number" 
+                        className={`form-control ${errors.edad ? 'is-invalid' : ''}`}
+                        value={formData.edad} 
+                        onChange={handleChange('edad')} 
+                      />
+                      {errors.edad && <div className="invalid-feedback">{errors.edad}</div>}
+                    </div>
+                    
+                    <div className="mb-3">
+                      <label className="form-label">Categoría</label>
+                      <select 
+                        className={`form-control ${errors.categoria ? 'is-invalid' : ''}`}
+                        value={formData.categoria} 
+                        onChange={handleChange('categoria')}
+                      >
+                        <option value="">Selecciona una categoría</option>
+                        {categorias.map(({ id, categoria }) => (
+                          <option key={id} value={categoria}>{categoria}</option>
+                        ))}
+                      </select>
+                      {errors.categoria && <div className="invalid-feedback">{errors.categoria}</div>}
+                    </div>
+                  </form>
+                )}
+                
+                {/* Chat - Paso 2 o 3 */}
+                {(step === 'chat' || step === 'success') && (
+                  <div className="chat-container mt-3">
+                    {step === 'chat' && (
+                      <div className="alert alert-info">
+                        <strong>Información completada!</strong> Ahora puedes escribir tu mensaje al Alcalde.
+                      </div>
+                    )}
+                    
+                    {messages.map((msg, index) => (
+                      <div key={index} className={`d-flex ${msg.isUser ? 'justify-content-end' : 'justify-content-start'} mb-3`}>
+                        <div 
+                          className={`p-3 rounded-4 ${msg.isUser ? 'text-white' : 'bg-light'} ${msg.isError ? 'text-white bg-danger' : ''}`} 
+                          style={{ maxWidth: '80%', backgroundColor: msg.isUser ? primaryColor : undefined }}
+                        >
+                          <div className="message-text">{msg.text}</div>
+                        </div>
+                      </div>
+                    ))}
+                    <div ref={messagesEndRef} />
+                    
+                    {step === 'success' && (
+                      <div className="text-center mt-4">
+                        <button 
+                          className="btn btn-outline-primary" 
+                          onClick={resetForm}
+                        >
+                          Enviar otro mensaje
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
               
-              <div className="modal-footer">
-                <form onSubmit={handleSendMessage} className="w-100">
-                  <div className="input-group">
-                    <textarea type="text" className="form-control" placeholder={inputPlaceholder} value={messageInput} onChange={(e) => setMessageInput(e.target.value)} />
-                    <button type="submit" className="btn btn-primary d-flex justify-content-center align-items-center gap-2">
-                      <p className='m-0 text-black'>Enviar</p>
-                      <img src={SendIcon} alt="send"  width={20}/>
-                    </button>
-                  </div>
-                </form>
-              </div>
+              {/* Footer con campo de mensaje solo visible en el paso 2 */}
+              {step === 'chat' && (
+                <div className="modal-footer">
+                  <form onSubmit={handleSendMessage} className="w-100">
+                    <div className="input-group">
+                      <textarea 
+                        className={`form-control ${errors.mensaje ? 'is-invalid' : ''}`}
+                        placeholder={inputPlaceholder}
+                        value={formData.mensaje}
+                        onChange={handleChange('mensaje')}
+                        disabled={isSubmitting}
+                      />
+                      <button 
+                        type="submit" 
+                        className="btn btn-primary d-flex justify-content-center align-items-center gap-2"
+                        disabled={isSubmitting}
+                      >
+                        <p className='m-0 text-black'>
+                          {isSubmitting ? 'Enviando...' : 'Enviar'}
+                        </p>
+                        <img src={SendIcon} alt="send" width={20}/>
+                      </button>
+                    </div>
+                    {errors.mensaje && <div className="text-danger mt-1">{errors.mensaje}</div>}
+                  </form>
+                </div>
+              )}
+              
+              {/* Footer con botón para continuar en el paso 1 */}
+              {step === 'form' && (
+                <div className="modal-footer">
+                  <button 
+                    type="button" 
+                    className="btn btn-primary d-flex justify-content-center align-items-center gap-2 w-100"
+                    onClick={handleSendMessage}
+                  >
+                    <span>Continuar</span>
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
       )}
+      
+      {/* <div className="d-flex justify-content-center w-100 my-lg-1 my-3 justify-content-lg-end p-2">
+        <a href="https://eso.gov.co/" target='_blank' rel="noopener noreferrer">
+          <img src={SmartCities} width={150} alt="smart-cities" />
+        </a>
+      </div> */}
     </div>
   );
 };

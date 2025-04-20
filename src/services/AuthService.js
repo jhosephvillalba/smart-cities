@@ -135,7 +135,7 @@ const AuthService = {
   verifyEmail: async (token) => {
     try{
       
-      const response = await apiClient.post('/api/auth/verify-email', {token}); 
+      const response = await apiClient.post('/api/auth/verify-email', {"token": token });  
       return response; 
 
     }catch(error){
