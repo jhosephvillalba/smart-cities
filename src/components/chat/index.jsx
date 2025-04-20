@@ -375,7 +375,7 @@ const ViewChat = ({ sendMessage, chatInit, activeChatBox }) => {
     sendMessage({ message: userMessage, isUser: true });
 
     try {
-      const response = await axios.post("http://ec2-54-166-74-32.compute-1.amazonaws.com:8000/chat/", {
+      const response = await axios.post("https://mirionegro.com/api/chat/", {
         message: userMessage,
       });
 

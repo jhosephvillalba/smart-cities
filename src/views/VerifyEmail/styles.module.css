@@ -42,3 +42,7 @@
     width: max-content !important;
     padding: 0.6rem 1.5rem !important;
 }
+
+.section_content { 
+    height: calc(100vh - 15rem) !important;
+}
