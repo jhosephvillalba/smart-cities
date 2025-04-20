@@ -391,9 +391,24 @@ const App = () => {
             AuthService.logout();
           } else {
             let currentUser = await AuthService.getCurrentUser();
-            let works = currentUser?.name?.split(" ");
-            let initials = `${works[0][0]}${works[1][0]}`;
-            setDataUser({ initials, ...currentUser });
+
+            // Separar el nombre en palabras, limpiar espacios, eliminar vacíos
+            let works = currentUser?.name
+              ?.split(" ")
+              .map(e => e.trim())
+              .filter(e => e !== "");
+
+            console.log({ works });
+
+            // Obtener iniciales de la primera y segunda palabra
+            let initials = "";
+            if (works.length >= 2) {
+              initials = `${works[0][0]}${works[1][0]}`;
+            } else if (works.length === 1) {
+              initials = `${works[0][0]}${works[0][0]}`; // Si sólo hay un nombre, duplicamos la inicial
+            }
+
+            setDataUser({ initials: initials.toUpperCase(), ...currentUser });
           }
 
         }
@@ -708,7 +723,7 @@ const App = () => {
               <Route path="/forgot-password" element={<ForgotPassword darkMode={darkMode} />} />
               <Route path="/reset-password" element={<ResetPassword darkMode={darkMode} />} />
               <Route path="/verify-email" element={<VerifyEmail darkMode={darkMode} />} />
-              
+
             </Routes>
             <footer className="global-footer mt-1">
               <div className="d-flex flex-column justify-content-center">

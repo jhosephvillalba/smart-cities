@@ -379,7 +379,10 @@ const ViewChat = ({ sendMessage, chatInit, activeChatBox }) => {
         message: userMessage,
       });
 
-      const botReply = response.data.choices[0].message.content;
+      // console.log({response}); 
+
+      const botReply = response.data.response;
+
       sendMessage({ message: botReply, isUser: false });
     } catch (error) {
       console.error("Error al llamar a la API:", error);
