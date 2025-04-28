@@ -60,7 +60,7 @@ body, html,  .main-container{
 }
 
 .main-container .content{
-  background-image: url(./assets/img/fondo-leon.jpg);
+  background-image: url(./assets/img/electrovia-backgound.jpg);
   /* background-repeat: no-repeat; */
   background-size: cover;
   background-position: bottom;
@@ -90,7 +90,7 @@ body, html,  .main-container{
 }
 
 
-.main-container .background-content .text_section a img:not([src^="https://eso.gov.co/"]) {
+.main-container .background-content .text_section a img:not([src^="https://www.grupotechnocorp.com/"]) {
   filter: none;
 }
 
@@ -265,26 +265,26 @@ body, html,  .main-container{
 
 
 .btn-primary {
-  border: solid 1px #15507A !important;
+  border: solid 1px #fff !important;
   border-radius: 21px;
   background: transparent !important;
 }
 
 .btn-primary-custom {
-  background-color: #15507A !important;
+  background-color: #69B544 !important;
   border-radius: 14px;
 }
 
 .btn-atjo {
-  background-color: #15507A !important;
+  background-color: #69B544 !important;
 }
 
 .btn-primary span {
-  color: #15507A !important;
+  color: #fff!important;
 }
 
 .btn-secondary {
-  background-color: #15507A !important;
+  background-color: #000 !important;
   border-radius: 21px;
 }
 
@@ -324,6 +324,19 @@ body, html,  .main-container{
 
 .accordion-button:focus {
   box-shadow: none !important;
+}
+
+
+.accordion-button::after {
+  flex-shrink: 0;
+  width: var(--bs-accordion-btn-icon-width);
+  height: var(--bs-accordion-btn-icon-width);
+  margin-left: auto;
+  content: url('/src/assets/icons/arrow-green.svg');
+  background-image: var(--bs-accordion-btn-icon);
+  background-repeat: no-repeat;
+  background-size: var(--bs-accordion-btn-icon-width);
+  transition: var(--bs-accordion-btn-icon-transition);
 }
 
 .w-lg-100 {
@@ -416,3 +429,7 @@ body, html,  .main-container{
 /* body.offcanvas-backdrop {
   transition: background-color 0.4s ease-in-out;
 } */
+
+.custom-bg-primary {
+  background-color: #69B544 !important;
+}

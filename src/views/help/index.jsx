@@ -1,52 +1,55 @@
 import React from "react";
 import styles from "./styles.module.css";
-import MoreIcon from "../../assets/icons/+.svg";
+import MoreIcon from "../../assets/icons/+Electrovia.svg";
 import BlackIcon from "../../assets/icons/back.svg"
 import { Link } from "react-router-dom";
-import SmartCities from "../../assets/icons/smart-cities.svg"
+import SmartCities from "../../assets/icons/technocorp-black.svg";
+import SmartCitiesLigth from "../../assets/icons/technocorp-white.svg";
+
 
 const faqs = [
   {
     id: 1,
-    title: "¿Qué es mirionegro.com y para qué sirve?",
-    content: "mirionegro.com es un centro de ayuda al ciudadano basado en Inteligencia Artificial creada por la Alcaldía de Rionegro para brindar atención, información y apoyo a los ciudadanos de forma rápida y eficiente."
+    title: "¿Cómo descargar y utilizar la aplicación móvil de ElectroVía?",
+    content: "Descarga la app de ElectroVía gratis desde la App Store (iOS) o Google Play (Android). Regístrate con tu correo electrónico, configura tu perfil, y usa funciones como localizar estaciones de carga, planificar rutas, gestionar pagos electrónicos, monitorear el estado de carga en tiempo real, y recibir recomendaciones personalizadas. ¡Es intuitiva y diseñada para tu comodidad!"
   },
   {
     id: 2,
-    title: "¿Qué tipo de información puedo encontrar en mirionegro.com?",
-    content: "Puedes acceder a información general de la Alcaldía, trámites, servicios, eventos, procedimientos y datos relevantes de cada secretaría."
+    title: "¿Cuánto cuesta cargar un vehículo eléctrico en las estaciones de ElectroVía?",
+    content: "Las tarifas varían según el tipo de vehículo y la estación, cobrando por kilovatio-hora (kWh) o tiempo de uso. En promedio, cargar un automóvil eléctrico cuesta entre COP 1,000 y COP 2,000 por kWh. Consulta las tarifas específicas en nuestra app o sitio web, donde también ofrecemos planes de suscripción para usuarios frecuentes con descuentos."
   },
   {
     id: 3,
-    title: "¿Cómo funciona la inteligencia artificial en mirionegro.com?",
-    content: "La plataforma utiliza inteligencia artificial para responder en tiempo real a tus preguntas, guiarte en trámites y ofrecer soluciones personalizadas, todo en menos de 3 minutos."
+    title: "¿Qué tipos de vehículos eléctricos son compatibles con las estaciones de carga de ElectroVía?",
+    content: "Nuestras estaciones son compatibles con todos los vehículos eléctricos, incluyendo bicicletas, motocicletas, automóviles, autobuses y camiones. Soportamos estándares internacionales como CCS, CHAdeMO y Type 2, asegurando que tu vehículo pueda cargarse de manera segura y eficiente."
   },
   {
     id: 4,
-    title: "¿Está disponible en otros idiomas además del español?",
-    content: "Sí. mirionegro.com puede atenderte en varios idiomas, facilitando el acceso de la información a personas de diferentes orígenes, lo que te permite consultar y recibir información en español, inglés, francés, italiano, alemán y portugués."
+    title: "¿Es necesario registrarse o pagar una membresía para usar las estaciones de carga?",
+    content: "Sí, necesitas registrarte en nuestra app o sitio web para acceder a la red de cargadores y gestionar pagos. No cobramos membresía inicial, pero ofrecemos planes premium opcionales que incluyen descuentos, prioridad en estaciones concurridas, y funciones avanzadas en la app para usuarios frecuentes."
   },
   {
     id: 5,
-    title: "¿En qué horarios puedo acceder a mirionegro.com?",
-    content: "La plataforma está disponible 24 horas al día, 7 días a la semana, los 365 días del año."
+    title: "¿Qué debo hacer si una estación de carga no funciona o está ocupada?",
+    content: "Si una estación no funciona, repórtalo a través de la app o llama a nuestra línea de soporte al 3002379876. Para verificar la disponibilidad, usa la app, que muestra el estado de los cargadores en tiempo real. Nuestro equipo de mantenimiento garantiza un 99% de tiempo de actividad, y respondemos a reportes en menos de 24 horas."
   },
   {
     id: 6,
-    title: "¿Qué diferencia a mirionegro.com de otros canales de atención ciudadana?",
-    content: "Su tecnología basada en inteligencia artificial permite una atención inmediata, precisa y sin tiempos de espera, lo que transforma la experiencia del ciudadano."
+    title: "¿Ofrecen soluciones para empresas con flotas de vehículos eléctricos?",
+    content: "¡Sí! Ofrecemos soluciones personalizadas para flotas, incluyendo la instalación de estaciones de carga en tus instalaciones, software de gestión de consumos, y consultoría para optimizar la transición a la electromovilidad. Contáctanos en www.electrovia.com.co o al 3002379876 para diseñar una solución a medida."
   },
   {
     id: 7,
-    title: "¿Puedo acceder a información sobre trámites de la Alcaldía directamente desde mirionegro.com?",
-    content: "Sí. La herramienta te guía paso a paso en distintos trámites y procedimientos, facilitando el acceso a los servicios de la Alcaldía."
+    title: "¿Utilizan energía renovable en sus estaciones de carga?",
+    content: "Nos comprometemos con la sostenibilidad. Actualmente, usamos sistemas de gestión inteligente para optimizar el consumo energético, y para 2028, el 50% de la energía de nuestras estaciones provendrá de fuentes renovables. Aspiramos a obtener la certificación de carbono neutral para 2030, reduciendo la huella de carbono de la movilidad eléctrica."
   },
   {
     id: 8,
-    title: "¿Quién creó mirionegro.com?",
-    content: "Fue desarrollada por la Empresa de Seguridad del Oriente - ESO Rionegro S.A.S, para la Alcaldía de Rionegro como parte de su compromiso con la innovación y la transformación digital del municipio."
+    title: "¿Cómo puedo contactar al servicio al cliente de ElectroVía?",
+    content: "Puedes contactarnos a través de nuestra línea de soporte 3002379876, o diligenciando formulario de contacto en www.electrovia.com.co. También ofrecemos chat en vivo en nuestra app para resolver dudas, reportar problemas, o consultar sobre servicios como mantenimiento o consultoría."
   }
 ];
+
 
 
 const Help = ({ darkMode }) => {
@@ -87,7 +90,11 @@ const Help = ({ darkMode }) => {
         </div>
       </div>
       <div className="mt-5 mb-3 d-flex justify-content-center">
-        <img src={SmartCities} width={180} alt="smart cities" />
+      <a href="https://www.grupotechnocorp.com/" target='_blank' rel="noreferrer">
+          {
+            darkMode === true ? <img src={SmartCitiesLigth} width={150} alt="smart-cities" /> : <img src={SmartCities} width={150} alt="smart-cities" />
+          }
+        </a>
       </div>
     </div>
   );

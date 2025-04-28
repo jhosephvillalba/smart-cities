@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import BlackIcon from "../../assets/icons/back.svg";
-import SmartCities from "../../assets/icons/smart-cities.svg";
+import SmartCities from "../../assets/icons/technocorp-black.svg";
+import SmartCitiesLigth from "../../assets/icons/technocorp-white.svg";
 import EyeIcon from "../../assets/icons/eye-closed.svg";
 import EyeOffIcon from "../../assets/icons/eye-open.svg";
 import styles from "./styles.module.css";
@@ -202,8 +203,10 @@ const Login = ({ darkMode, setLoggin }) => {
 
             </div>
             <div className="d-flex justify-content-center w-100 my-lg-1 my-3 justify-content-lg-end p-2">
-                <a href="https://eso.gov.co/" target='_blank'>
-                    <img src={SmartCities} width={150} alt="smart-cities" />
+                <a href="https://www.grupotechnocorp.com/" target='_blank'>
+                    {
+                        darkMode === true ? <img src={SmartCitiesLigth} width={150} alt="smart-cities" /> : <img src={SmartCities} width={150} alt="smart-cities" />
+                    }
                 </a>
             </div>
         </div>

@@ -7,6 +7,7 @@
     background: transparent;
     border: none;
     padding: 1.2rem;
+    overflow-y: hidden !important;
 }
 
 .input_text:focus {
@@ -21,7 +22,7 @@
 
 .container_chat_buttons {
     border-radius:21px;
-    background: var(--gradiente);
+    background: #69B544;
     padding: 0.7rem;
 }
 

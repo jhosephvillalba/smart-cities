@@ -28,7 +28,7 @@ apiClient.interceptors.request.use(
 
 // Servicio para mensajes al alcalde
 const MayorMessageService = {
-  // Enviar un mensaje al alcalde
+  // Enviar un Contacta un agente de ventas
   sendMessage: async (messageData) => {
     try {
       const response = await apiClient.post('/api/mayor-messages/', {

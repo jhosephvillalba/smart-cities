@@ -2,9 +2,9 @@ import React, { useState, useEffect, use } from "react";
 import { Routes, Route, NavLink, Link, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 //icons
-import IconExplore from "./assets/icons/explore-btn-smart.svg";
+import IconExplore from "./assets/icons/explore-odin.svg";
 import IconLoupe from "./assets/icons/icon-loupe.svg";
-import IconOdinIa from "./assets/icons/btn-logo-smart.svg";
+import IconOdinIa from "./assets/icons/electrovia-icon.svg";
 import IconOdin from "./assets/icons/icon-odinia.svg";
 
 import IconPencilBlack from "./assets/icons/icon-pencil-black.svg";
@@ -12,8 +12,8 @@ import IconPencilBlack from "./assets/icons/icon-pencil-black.svg";
 // import IconStar from "./assets/icons/start-smart.svg";
 import IconSwitchBlack from "./assets/icons/icon-switch-black.svg";
 
-import LogoWhite from "./assets/icons/rionegro-logo-black.svg";
-import LogoWhite2 from "./assets/icons/rionegro-logo-white.svg"
+import LogoWhite from "./assets/icons/logo-electrovia-black.svg";
+import LogoWhite2 from "./assets/icons/logo-electrovia-white.svg"
 
 import PensilAndNoteBook from "./assets/icons/pencil-and-notepack.svg";
 import PensilAndNoteBook2 from "./assets/icons/tableta-lapiz-negro.svg";
@@ -163,7 +163,7 @@ const App = () => {
                 className="btn btn-light d-flex flex-row align-items-center"
               >
                 <img src={IconOdinIa} alt="" />
-                <span className="ms-2">Alcaldia de Rionegro</span>
+                <span className="ms-2">App Electrovía</span>
               </a>
               <Link to="/"
                 type="button"
@@ -245,7 +245,7 @@ const App = () => {
 
                 >
                   <img src={IconOdinIa} alt="" />
-                  <span className="ms-2">Alcaldia de Rionegro</span>
+                  <span className="ms-2">App Electrovía</span>
                 </a>
                 <Link to="/"
                   type="button"
@@ -406,7 +406,7 @@ const App = () => {
             </Routes>
             <footer className="global-footer mt-1">
               <div className="d-flex flex-column justify-content-center">
-                <p className="text-center" style={{ fontSize: "12px" }}>Al enviar un mensaje a OdinIA, aceptas nuestros <a href="#">Términos</a> y reconoces que leíste nuestra <a href="#">Política de privacidad.</a></p>
+                <p className="text-center" style={{ fontSize: "12px" }}>Al enviar un mensaje a App Electrovía, aceptas nuestros <a href="#">Términos</a> y reconoces que leíste nuestra <a href="#">Política de privacidad.</a></p>
               </div>
             </footer>
           </div>

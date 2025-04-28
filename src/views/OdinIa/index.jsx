@@ -74,7 +74,7 @@ const OdinIa = ({ handlerDarkMode, darkStatus }) => {
                                     key={index}
                                     ref={isLastMessage ? lastMessageRef : null}
                                     className={`p-2 rounded-3 ${isUser 
-                                        ? "bg-primary text-white align-self-end" 
+                                        ? "custom-bg-primary text-white align-self-end" 
                                         : "bg-light align-self-start"}`}
                                     style={{ 
                                         maxWidth: "75%",
@@ -93,7 +93,12 @@ const OdinIa = ({ handlerDarkMode, darkStatus }) => {
                     </div>
                 </div>
                 <BoxMessage show={activeBox} onClose={handlerActiveBox}/> 
-                <ViewChat sendMessage={handlerMessage}  activeChatBox={handlerActiveBox} chatInit={messages.length}/>
+                <ViewChat 
+                    sendMessage={handlerMessage}  
+                    activeChatBox={handlerActiveBox} 
+                    chatInit={messages.length} 
+                    darkMode={darkStatus}
+                />
             </div>
         </>
     );
