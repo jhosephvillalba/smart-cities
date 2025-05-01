@@ -107,7 +107,7 @@ const ForgotPassword = ({ darkMode }) => {
                   </p>
                   <p className="text-center">
                     Revisa tu bandeja de entrada y sigue las instrucciones para completar el proceso en {' '}
-                    <a href="https://mirionegro.com" target="_blank" className={styles.link}>Mirionegro.com</a>.
+                    <a href="https://www.electrovia.com.co/" target="_blank" className={styles.link}>Electrovia.com.co</a>.
                   </p>
                   <p className="text-center">
                     Si no encuentras el mensaje, revisa también la carpeta de correo no deseado (<b><i>Span</i></b>).

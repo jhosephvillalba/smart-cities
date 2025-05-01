@@ -158,7 +158,7 @@ const App = () => {
             <div className="menu__item d-flex flex-column">
               <a
                 type="button"
-                href="https://rionegro.gov.co/"
+                href="https://www.electrovia.com.co/"
                 target="_blank"
                 className="btn btn-light d-flex flex-row align-items-center"
               >
@@ -238,7 +238,7 @@ const App = () => {
             <div className="menu__content d-flex flex-column justify-content-between mt-4 pe-3">
               <div className="menu__item d-flex flex-column">
                 <a
-                  href="https://rionegro.gov.co/"
+                  href="https://www.electrovia.com.co/"
                   target="_blank"
                   type="button"
                   className="btn btn-light d-flex flex-row align-items-center p-1 text-start w-max-content"
@@ -337,7 +337,7 @@ const App = () => {
                     width: '40px',
                     height: '40px',
                     borderRadius: '50%',
-                    backgroundColor: '#0d6efd',
+                    backgroundColor: '#69B544',
                     color: 'white',
                     cursor: 'pointer',
                     transition: 'all 0.3s'

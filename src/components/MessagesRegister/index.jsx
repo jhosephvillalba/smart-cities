@@ -62,7 +62,7 @@ const MessageRegister = ({ name="Anonymus", type }) => {
                 <>
                     <div className={`card ${styles.card_message}`}>
                         <div className="card-body">
-                            <p className="card-text text-center">Hola <b><i>{name}</i></b></p> <p className="text-center">ya te encuentras registrado en la plataforma de <a href="https://mirionegro.com" target="_blank" className={styles.link}>Mirionegro.com</a> haz click en el botón para iniciar sesión. </p>
+                            <p className="card-text text-center">Hola <b><i>{name}</i></b></p> <p className="text-center">ya te encuentras registrado en la plataforma de <a href="Electrovia.com.co" target="_blank" className={styles.link}>ayudaelectrovia.com</a> haz click en el botón para iniciar sesión. </p>
                             <div className="d-flex justify-content-center w-100">
                                 <a href="#" className={`btn ${styles.button} ${styles.button_card}`} onClick={() => navegate('/login')}>Iniciar sesión</a>
                             </div>

@@ -184,7 +184,7 @@ const Login = ({ darkMode, setLoggin }) => {
                                         ¡Bienvenido de nuevo, <b><i>{dataUser}</i></b>! 👋
                                     </p>
                                     <p className="text-center">
-                                        Nos alegra tenerte nuevamente en <a href="https://mirionegro.com" target="_blank" className={styles.link}>Mirionegro.com</a>.
+                                        Nos alegra tenerte nuevamente en <a href="https://www.electrovia.com.co/" target="_blank" className={styles.link}>Electrovia.com.co</a>.
                                         Tu sesión se ha iniciado exitosamente.
                                     </p>
                                     <div className="d-flex justify-content-center w-100 mt-4">

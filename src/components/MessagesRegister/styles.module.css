@@ -10,7 +10,7 @@
 }
 
 .button {
-    background-color: var(--color-button) !important;
+    background-color: #69B544 !important;
     color: white !important;
     border-radius: 16px !important;
 }
