@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // Usar la misma configuración base que AuthService
-const API_URL = 'https://mirionegro.com';
+const API_URL = 'https://ayudaelectrovia.com';
 
 // Crear una instancia de axios con configuración base
 const apiClient = axios.create({

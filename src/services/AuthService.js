@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Configuración base de axios
-const API_URL = 'https://mirionegro.com';
+const API_URL = 'https://ayudaelectrovia.com';
 
 // Crear una instancia de axios con configuración base
 const apiClient = axios.create({

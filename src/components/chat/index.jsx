@@ -36,7 +36,7 @@ const ViewChat = ({ sendMessage, chatInit, activeChatBox, darkMode }) => {
     sendMessage({ message: userMessage, isUser: true });
 
     try {
-      const response = await axios.post("https://mirionegro.com/api/chat/", {
+      const response = await axios.post("https://ayudaelectrovia.com/api/chat/", {
         message: userMessage,
       });
 
