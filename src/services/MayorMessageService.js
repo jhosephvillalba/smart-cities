@@ -28,16 +28,18 @@ apiClient.interceptors.request.use(
 
 // Servicio para mensajes al alcalde
 const MayorMessageService = {
-  // Enviar un Contacta un agente de ventas
+  // Enviar un Contacta un agente de ventas 
   sendMessage: async (messageData) => {
     try {
+
       const response = await apiClient.post('/api/mayor-messages/', {
-        barrio: messageData.barrio,
-        sexo: messageData.sexo,
-        edad: messageData.edad ? parseInt(messageData.edad) : null,
-        categoria: messageData.categoria,
+        nombre: messageData.nombre,
+        correo: messageData.correo,
+        telefono: messageData.telefono,
+        interes: messageData.interes,
         mensaje: messageData.mensaje
       });
+
       return response.data;
     } catch (error) {
       throw error;

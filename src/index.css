@@ -9,6 +9,7 @@
   --color-titles: #444444;
   --gradiente: linear-gradient(90deg, #FDE487 30.47%, #EAA34A 100%);
   --color-button:#15507A; 
+  --bs-form-invalid-border-color: #FF0000 !important;
 
 }
 
@@ -432,4 +433,16 @@ body, html,  .main-container{
 
 .custom-bg-primary {
   background-color: #69B544 !important;
+}
+
+
+.custom-is-invalid {
+  border-color: var(--bs-form-invalid-border-color) !important;
+  padding-right: calc(1.5em + .75rem);
+  background-image: url('/src/assets/icons/alert.svg');
+  background-repeat: no-repeat;
+  background-position: left calc(.375em + .1875rem) center;
+  background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+  position: relative;
+  padding-left: 2rem !important;
 }
