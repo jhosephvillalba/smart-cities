@@ -20,9 +20,13 @@ const ViewChat = ({ sendMessage, chatInit, activeChatBox, darkMode }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const navegateHelp = () => {
     navigate("/help");
   };
+
+  const navegateCobertura = () => {
+    navigate("/cobertura-electrovia");
+  }
 
   const handlerInput = (e) => setInput(e.target.value);
 
@@ -92,9 +96,14 @@ const ViewChat = ({ sendMessage, chatInit, activeChatBox, darkMode }) => {
                       Contacta un agente de ventas
                     </span>
                   </button>
-                  <button onClick={handleLogin} className="btn btn-info d-flex justify-content-center align-items-center">
+                  <button onClick={navegateHelp} className="btn btn-info d-flex justify-content-center align-items-center">
                     <span className={`text-white ${styles.font_family_text_btn} ms-1`}>
                       Preguntas frecuentes
+                    </span>
+                  </button>
+                  <button onClick={navegateCobertura} className="btn btn-info d-flex justify-content-center align-items-center">
+                    <span className={`text-white ${styles.font_family_text_btn} ms-1`}>
+                      Cobertura ElectroVía
                     </span>
                   </button>
                 </div>
@@ -181,9 +190,14 @@ const ViewChat = ({ sendMessage, chatInit, activeChatBox, darkMode }) => {
                       Contacta un agente de ventas
                     </span>
                   </button>
-                  <button onClick={handleLogin} className="btn btn-info d-flex justify-content-center align-items-center">
+                  <button onClick={navegateHelp} className="btn btn-info d-flex justify-content-center align-items-center">
                     <span className={`text-white ${styles.font_family_text_btn} ms-1`}>
                       Preguntas frecuentes
+                    </span>
+                  </button>
+                  <button onClick={navegateCobertura} className="btn btn-info d-flex justify-content-center align-items-center">
+                    <span className={`text-white ${styles.font_family_text_btn} ms-1`}>
+                      Cobertura ElectroVía
                     </span>
                   </button>
                 </div>

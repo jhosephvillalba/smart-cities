@@ -35,6 +35,7 @@ import ForgotPassword from "./views/ForgotPassword";
 import ResetPassword from "./views/ResetPassword";
 import VerifyEmail from "./views/VerifyEmail";
 import AuthService from "./services/AuthService";
+import Cobertura from "./views/CoberturaElectrovia";
 // import { useNavigate } from "react-router-dom";
 
 
@@ -256,13 +257,19 @@ const App = () => {
                   Explorar OdinIA
                 </Link>
               </div>
-              <div className="d-flex justify-content-center">
+              <div className="d-flex flex-column justify-content-center">
                 {/* <NavbarSideBar /> */}
                 <Link to="/help"
                   type="button"
                   className="btn btn-light d-flex flex-row align-items-center p-1 mt-2 text-start w-max-content"
                 >
                   Preguntas Frecuentes
+                </Link>
+                <Link to="/cobertura-electrovia"
+                  type="button"
+                  className="btn btn-light d-flex flex-row align-items-center p-1 mt-3 text-start w-max-content"
+                >
+                  Cobertura Electrovía
                 </Link>
               </div>
               <div className="menu__item d-flex flex-column">
@@ -402,6 +409,8 @@ const App = () => {
               <Route path="/forgot-password" element={<ForgotPassword darkMode={darkMode} />} />
               <Route path="/reset-password" element={<ResetPassword darkMode={darkMode} />} />
               <Route path="/verify-email" element={<VerifyEmail darkMode={darkMode} />} />
+              <Route path="cobertura-electrovia" element={<Cobertura darkMode={darkMode}/>} />
+              <Route path="*" element={<OdinIa handlerDarkMode={handlerDarkMode} darkStatus={darkMode} />} />
 
             </Routes>
             <footer className="global-footer mt-1">

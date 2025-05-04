@@ -342,6 +342,14 @@ const BoxMessage = ({
         mensaje: formData.mensaje
       });
 
+      // await MayorMessageService.sendMessage({
+      //   barrio: formData.nombre,
+      //   sexo: "Otros",
+      //   edad: 28,
+      //   categoria: formData.interes,
+      //   mensaje: formData.mensaje
+      // });
+
       if (onMessageSent) onMessageSent(formData);
 
       setTimeout(() => {

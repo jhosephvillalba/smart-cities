@@ -32,11 +32,11 @@ const routes = [
     name: "Preguntas Frecuentes",
     uri: "/help",
   },
-  // {
-  //   id: 9,
-  //   name: "Zonificación",
-  //   uri: "/zoning",
-  // },
+  {
+    id: 8,
+    name: "Cobertura Electrovía",
+    uri: "/cobertura-electrovia",
+  },
 ];
 
 const NavbarSideBar = () => {

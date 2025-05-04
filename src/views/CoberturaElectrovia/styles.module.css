@@ -1,0 +1,32 @@
+.container {
+    background-color: white;
+    border-radius: 10px;
+    height: 100vh;
+}
+
+.text_styles {
+    font-size: 13px;
+    line-height: 1.1;
+    font-weight: 600;
+    color: #878989;
+}
+
+.help_container {
+    /* padding: 0 1.1rem 0 0; */
+    height: calc(100vh - 21rem) !important;
+    overflow-y: auto;
+    padding: 0.4rem;
+}
+
+.help_container > *:first-child {
+    margin: 0 !important;
+}
+
+/* .container_data {
+    width: 80%;
+} */
+
+
+.inverte {
+    filter: invert(1);
+}
