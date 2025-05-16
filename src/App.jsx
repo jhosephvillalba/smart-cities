@@ -258,7 +258,26 @@ const App = () => {
                 </Link>
               </div>
               <div className="d-flex flex-column justify-content-center">
+
                 {/* <NavbarSideBar /> */}
+                <a href="https://electrovia.live/ElectroVa-Qu-hacemos-2025/index.html" _blank="target"
+                  type="button"
+                  className="btn btn-light d-flex flex-row align-items-center p-1 mt-2 text-start w-max-content"
+                >
+                  ¿Que hacemos? 
+                </a>
+                <a href="https://electrovia.live" _blank="target"
+                  type="button"
+                  className="btn btn-light d-flex flex-row align-items-center p-1 mt-2 text-start w-max-content"
+                >
+                  Soluciones ElectroVía
+                </a>
+                <a href="https://electrovia.live/ElectroVa-Distribuidores-2025/index.html" _blank="target"
+                  type="button"
+                  className="btn btn-light d-flex flex-row align-items-center p-1 mt-2 text-start w-max-content"
+                >
+                  Distribuidores ElectroVía
+                </a>
                 <Link to="/help"
                   type="button"
                   className="btn btn-light d-flex flex-row align-items-center p-1 mt-2 text-start w-max-content"

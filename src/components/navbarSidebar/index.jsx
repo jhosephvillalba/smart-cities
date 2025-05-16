@@ -43,6 +43,36 @@ const NavbarSideBar = () => {
   return (
     <>
       <ul className="nav flex-column">
+        <li className="nav-item">
+          <a
+            href="https://electrovia.live/ElectroVa-Qu-hacemos-2025/index.html"
+            _blank="target"
+            type="button"
+            className="nav-link text-black"
+          >
+            ¿Que hacemos?
+          </a>
+        </li>
+        <li className="nav-item">
+          <a
+            href="https://electrovia.live"
+            _blank="target"
+            type="button"
+            className="nav-link text-black"
+          >
+            Soluciones ElectroVía
+          </a>
+        </li>
+        <li className="nav-item">
+          <a
+            href="https://electrovia.live/ElectroVa-Distribuidores-2025/index.html"
+            _blank="target"
+            type="button"
+            className="nav-link text-black"
+          >
+            Distribuidores ElectroVía
+          </a>
+        </li>
         {routes.map(({ id, name, uri }) => (
           <li className="nav-item" key={id}>
             <NavLink className="nav-link text-black" to={uri}>
